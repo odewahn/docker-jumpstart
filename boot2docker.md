@@ -116,6 +116,8 @@ running
 The following table, taken from "boot2docker help", summarizes the various commands.
 
 
+| Command                 |  Description
+|-------------------------|-----------------------------------------------------------------------|
 | init                    | Create a new boot2docker VM.
 | up                      | Starts the VM, which also starts the Docker daemon
 | status                  | The current state of VM, such as "running," "saved," or "poweroff".
@@ -134,6 +136,8 @@ The following table, taken from "boot2docker help", summarizes the various comma
 
 You can also provide a variety of options to further customize the VM, such as setting the amount of memory or the name of the box itself.  Most of these options appear to only work when the image is created (i.e., they only apply then you're doing "boos2docker init").  The following table summarizes the options from "boot2docker help".  (The actual output from the command shows the default settings for each option.)
 
+| Option       |  Description
+|--------------|----------------------------------------------------------------------|
 | --basevmdk   |  Path to VMDK to use as base for persistent partition
 | --dhcp       |  enable VirtualBox host-only network DHCP.
 | --dhcpip     |  VirtualBox host-only network DHCP server address.
