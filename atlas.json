@@ -1,0 +1,28 @@
+{
+  "branch": "master",
+  "files": [
+    "boot2docker.md"
+  ],
+  "formats": {
+    "pdf": {
+      "version": false,
+      "index": false,
+      "toc": false
+    },
+    "epub": {
+      "index": false,
+      "toc": false,
+      "epubcheck": false
+    },
+    "mobi": {
+      "index": false,
+      "toc": false
+    },
+    "html": {
+      "index": false,
+      "toc": false
+    }
+  },
+  "theme": "oreillymedia/animal_theme",
+  "title": "Docker Jumpstart"
+}
