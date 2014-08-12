@@ -1,8 +1,8 @@
 # Using boot2docker to run Docker on a Mac or Windows
 
-Docker's underlying technologies only work only on Linux.  To get around this on a Mac or Windows, Docker provides a command-line tool called [boot2docker](http://boot2docker.io/) that installs a Linux virtual machine (or "VM") to run Docker.  If you're unfamiliar with VMs, they let you run a "guest" operating system (like Linux) on your "host" operating system (like a Mac or Windows).  For all intents and purposes, the VM is another computer running "inside" your computer.  It has its own operating system, filesystem, and network that can piggyback on the resources of the host OS in an isolated environment.  
+Docker's underlying technologies only work only on Linux.  To use it on a Mac or Windows, you can use a command-line tool called [boot2docker](http://boot2docker.io/) that installs a Linux virtual machine (or "VM") on your system.  If you're unfamiliar with VMs, they let you run a "guest" operating system (like Linux) on your "host" operating system (like a Mac or Windows).  For all intents and purposes, the VM is another computer running "inside" your computer.  It has its own operating system, filesystem, and network that can piggyback on the resources of the host OS in an isolated environment.  
 
-So, the idea behind boot2docker is really quite clever: since we can't run Docker natively on Windows or a Mac, we install a bare-bones Linux VM that *can* run Docker, and then we communicate with it using a Docker client running on our host (i.e., the terminal on our main OS).  If you've ever used a package like Postgres or MySql, it's exactly the same idea: you have a client tool that you use to issue commands to another server.  The main difference is that our "docker" process is running inside a VM, rather than as a native service.  There are a few other wrinkles that we'll come back to in later sections, but by and large boot2docker hides the nitty gritty details from us.  
+So, the idea behind boot2docker is really quite clever: since we can't run Docker natively on Windows or a Mac, we install a bare-bones Linux VM that *can* run Docker, and then we communicate with it using a Docker client running on our host (i.e., the terminal on our main OS).  If you've ever used a package like Postgres or MySql, it's exactly the same idea: you have a client tool that you use to issue commands to another server.  The main difference is that our "docker" process is running inside a VM, rather than as a native service.  
 
 ## Install boot2docker
 
@@ -10,7 +10,7 @@ Before you start, it's a good idea to first set up SSH on your host machine so t
 
 You can find [Mac](http://docs.docker.com/installation/mac/) and [Windows](http://docs.docker.com/installation/windows/) installation instructions on the Docker's [documentation site](http://docs.docker.com/).  Since both Docker and boot2docker are changing so rapidly, rather than describe the steps here, I've provided an overview of the key steps so that you'll understand what's happening. 
 
-First you download a packaged version of the app, either as a .pkg (for a Mac) or an EXE (for Windows).  Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines.  
+First you'll download the installation package, either as a .pkg (for a Mac) or an EXE (for Windows).  Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines.
 
 Once the basic tools are installed, you're ready to create the box by running *boot2docker init*.  (Think of this as purchasing a new computer.)  This will create a new Linux "box" called "boot2docker-vm" on your machine that has Docker installed, as well as configure some of the basic things you'll need to communicate with it from your host.  Here's an example:
 
@@ -25,7 +25,6 @@ $ boot2docker init
 2014/08/11 13:30:59 Setting VM storage...
 2014/08/11 13:31:07 Done. Type `boot2docker up` to start the VM.
 ```
-
 
 Once the box is created (it can take a few minutes because it has to download the image), you run *boot2docker up*  to boot up the box. Think of this as turning your the new computer on. The box will start the Docker daemon that will listen to requests from our client.  Here's an example:
 
@@ -45,7 +44,7 @@ Finally, you'll need to set an environment variable called DOCKER\_HOST that wil
 $ export DOCKER_HOST=tcp://192.168.59.104:2375
 ```
 
-The export you did in the previous step is temporary, so you should make it permanent.  On a Mac, [add the following line to the ~/.bash_profile](http://stackoverflow.com/questions/22502759/mac-os-x-10-9-setting-permanent-environment-variables):
+Since running the export command in the shell will only set the environment variable temporarily, you should follow the process on your OS to make it permanent.  On a Mac, [add the following line to the ~/.bash_profile](http://stackoverflow.com/questions/22502759/mac-os-x-10-9-setting-permanent-environment-variables):
 
 ```console
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
@@ -63,31 +62,14 @@ Pulling repository hello-world
 511136ea3c5a: Download complete 
 2505d942a91d: Download complete 
 Hello from Docker.
-This message shows that your installation appears to be working correctly.
-
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (Assuming it was not already locally available.)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-For more examples and ideas, visit:
- http://docs.docker.com/userguide/
+...
 ```
-
-Note that if you get a message like the following, you have probably not set DOCKER\_HOST correctly:
+As you can see from the output, this command has pulled down the [hello-world](https://registry.hub.docker.com/_/hello-world/) repository from  (more on this in a later chapter) and printed the text "Hello from Docker." If you're seeing this message, then you've successfully installed boot2docker.  Alternatively, if you get a message like the following, you should doublecheck that you've set the DOCKER\_HOST environment variable correctly:
 
 ```
 $ docker run hello-world
 2014/08/11 15:05:55 Post http:///var/run/docker.sock/v1.13/containers/create: dial unix /var/run/docker.sock: no such file or directory
 ```
-
 
 ### Upgrading from an older install
 
@@ -192,11 +174,20 @@ $ boot2docker info | python -m json.tool
 }
 ```
 
+## Opening a port with VirtualBox
 
+By and large, boot2docker hides the nitty gritty details of working directly with [VirtualBox](https://www.virtualbox.org/), the underlying software that allows us to run the VMs.  However, there's one particular situation -- opening a port from your VM to your host machine -- where you'll need to use the VirtualBox itself.  The most common use case for doing this is when you are developing some custom app that is running within Docker, but you want to connect with it in your browser.
 
-## VirtualBox Quick Reference
+For example, say you're writing a Rails application.  You might pull down the a [Docker image that has a  Ruby and Rails environment](https://registry.hub.docker.com/u/stackbrew/rails/) installed, start the local development server, and then try to connect to [localhost:4567](localhost:4567) to see the output, like you would in a "normal" environment.  By default, however, boot2docker only exposes a few ports on the VM (port 2022 for SSH and port 2375 for the boot2docker API), so instead of seeing your app, you'll only see a "Cannot connect" page.
 
-(Behind the scenes  [VirtualBox](https://www.virtualbox.org/), a free package from Oracle.  )  
+Fortunately, the fix for this is quite simple.  VirtualBox has a command line utility called "VBoxManage" that you can use to customize the box as it runs.  To expose a port, type something like this into your terminal:    
 
-* Open a port
-* Kill a box
+```
+$ VBoxManage controlvm boot2docker-vm natpf1 "rails-server,tcp,127.0.0.1,4567,,4567"
+```
+
+This will create a port forwarding rule that in VirtualBox that will last until you destroy the box.  You can also create this rule in the VirtualBox GUI tool in the "Settings -> Network -> Port Forwarding" screen, as shows in the next figure.
+
+<img src="images/vboxmanage.png"/>
+
+You can find out more about this tool in the extensive [VirtualBox documention](https://www.virtualbox.org/manual/UserManual.html) site.
