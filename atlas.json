@@ -1,6 +1,8 @@
 {
   "branch": "master",
   "files": [
+    "coverpage.html",
+    "toc.md",
     "introduction.md",
     "boot2docker.md",
     "overview.md",
