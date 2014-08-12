@@ -14,7 +14,7 @@ You can find [Mac](http://docs.docker.com/installation/mac/) and [Windows](http:
 * Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines. 
 * Next, you run *boot2docker init* to create a new VM instance.  (Think of this as purchasing a new computer.)  This will create a new Linux "box" called "boot2docker-vm" on your machine that has Docker installed, as well as configure some of the basic things you'll need to communicate with it from your host.
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ boot2docker init
 2014/08/11 13:30:58 Creating VM boot2docker-vm...
 2014/08/11 13:30:58 Apply interim patch to VM boot2docker-vm (https://www.virtualbox.org/ticket/12748)
@@ -24,37 +24,37 @@ $ boot2docker init
 2014/08/11 13:30:58 Setting NIC #2 to use host-only network "vboxnet4"...
 2014/08/11 13:30:59 Setting VM storage...
 2014/08/11 13:31:07 Done. Type `boot2docker up` to start the VM.
+</pre>
 
-```
 
 *  Next, you run *boot2docker up*  to boot up the box. (Think of this as turning your the new computer on.)  The box will start the Docker daemon that will listen to requests from our client.
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ boot2docker up
 2014/08/11 13:38:00 Waiting for VM to be started...
 ............
 2014/08/11 13:38:36 Started.
 2014/08/11 13:38:36 To connect the Docker client to the Docker daemon, please set:
 2014/08/11 13:38:36     export DOCKER_HOST=tcp://192.168.59.104:2375
-``` 
+</pre>
 
 * Next, set an environment variable called DOCKER\_HOST that will tell your Docker client on your host machine the URI for the Docker daemon running on the VM.  This address is the last line returned from the "boot2docker up" command.   For example, here's what we'd run based on the output we got in the previous step:
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ export DOCKER_HOST=tcp://192.168.59.104:2375
-```
+</pre>
 
 * The export you did in the previous step is temporary, so you should make it permanent.  On a Mac, [add the following line to the ~/.bash_profile](http://stackoverflow.com/questions/22502759/mac-os-x-10-9-setting-permanent-environment-variables):
 
-```
+<pre data-code-language="console" data-type="programlisting">
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
-```
+<pre>
 
 *  On windows, [use the "environment variables" setting of the "Advanced system settings" tab](http://stackoverflow.com/questions/17312348/how-do-i-set-windows-environment-variables-permanently) 
 
 Once you've completed all these steps, you should have the Docker client installed and a VM capable of starting Docker containers.  To test it out, try the command "docker run hello-world" from your host:
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ docker run hello-world
 Unable to find image 'hello-world' locally
 Pulling repository hello-world
@@ -78,40 +78,40 @@ To try something more ambitious, you can run an Ubuntu container with:
 
 For more examples and ideas, visit:
  http://docs.docker.com/userguide/
-```
+</pre>
 
 Note that if you get a message like the following, you have probably not set DOCKER\_HOST correctly:
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ docker run hello-world
 2014/08/11 15:05:55 Post http:///var/run/docker.sock/v1.13/containers/create: dial unix /var/run/docker.sock: no such file or directory
-```
+</pre>
 
 
 ### Upgrading from an older install
 
 If you've installed an older version of boot2docker, you can (and should!) use boot2docker itself to update the package.  The commands are:
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ boot2docker stop
 $ boot2docker download
 $ boot2docker start
-```
+</pre>
 
 ## boot2docker Quick Reference
 
 boot2docker uses the git-style command format:
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ boot2docker [<options>] <command> [<args>]
-```
+</pre>
 
 Here's an example of how to get the VM's current status:
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ boot2docker status
 running
-```
+</pre>
 
 The following table, taken from "boot2docker help", summarizes the various commands.
 
@@ -161,7 +161,7 @@ You can also provide a variety of options to further customize the VM, such as s
 
 Here's an example of how you'd created an image that used 4GB, rather than the default 2GB.
 
-```
+<pre data-code-language="console" data-type="programlisting">
 $ boot2docker --memory=4096 init
 2014/08/11 17:15:50 Creating VM boot2docker-vm...
 2014/08/11 17:15:50 Apply interim patch to VM boot2docker-vm (https://www.virtualbox.org/ticket/12748)
@@ -189,8 +189,7 @@ $ boot2docker info | python -m json.tool
     "UUID": "db24beb1-5b83-4744-9f5f-ce05b41eda91",
     "VRAM": 8
 }
-
-```
+</pre>
 
 
 
