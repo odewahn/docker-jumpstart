@@ -1,7 +1,13 @@
 {
   "branch": "master",
   "files": [
-    "boot2docker.md"
+    "introduction.md",
+    "boot2docker.md",
+    "overview.md",
+    "building-images-with-dockerfiles.md",
+    "dockerhub.md",
+    "linking-containers.md",
+    "development-workflow.md"
   ],
   "formats": {
     "pdf": {
