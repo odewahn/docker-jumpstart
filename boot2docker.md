@@ -9,9 +9,9 @@ This chapter will walk you through the installation process.  Since both Docker 
 
 Before you start, it's a good idea to first set up SSH on your host machine so that boot2docker can install your login credentials on the VM.  Otherwise, you'll be prompted for a password whenever you log in.  If you're unfamiliar with SSH or SSH keys, Appendix ??? will give you details of how to get set up.
 
-First download the installation package for your system.  You can find [Mac](http://docs.docker.com/installation/mac/) and [Windows](http://docs.docker.com/installation/windows/) installation instructions on the Docker's [documentation site](http://docs.docker.com/).  Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines.
+First, download the installation package for your system.  You can find [Mac](http://docs.docker.com/installation/mac/) and [Windows](http://docs.docker.com/installation/windows/) installation instructions on the Docker's [documentation site](http://docs.docker.com/).  Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines.
 
-Once the basic tools are installed, you're ready to create the box by running *boot2docker init*.  (Think of this as purchasing a new computer.)  This will create a new Linux "box" called "boot2docker-vm" on your machine that has Docker installed, as well as configure some of the basic things you'll need to communicate with it from your host.  Here's an example:
+Once the basic tools are installed, you're ready to create the box by running *boot2docker init*.  (Think of this as purchasing a new computer.)  This will create a new Linux "box" called "boot2docker-vm" on your machine that has Docker installed, as well as configure some of the basic things you'll need to communicate with it from your host.  The command will produce something like this:
 
 ```console
 $ boot2docker init
@@ -25,7 +25,7 @@ $ boot2docker init
 2014/08/11 13:31:07 Done. Type `boot2docker up` to start the VM.
 ```
 
-Once the box is created (it can take a few minutes because it has to download the image), you run *boot2docker up*  to boot up the box. Think of this as turning your the new computer on. The box will start the Docker daemon that will listen to requests from our client.  Here's an example:
+Once the box is created (it can take a few minutes because it has to download the image), you run *boot2docker up*  to boot up the box. Think of this as turning your the new computer on. The box will start the Docker daemon in the VM that listens for requests from the our client on our host.  Here's an example:
 
 ```console
 $ boot2docker up
