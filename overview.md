@@ -16,7 +16,7 @@ $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 ```
 
-# docker pull 
+### docker pull 
 
 First step is to use "docker pull" to grab a base image.  Le't use "ubuntu:latest"
 
