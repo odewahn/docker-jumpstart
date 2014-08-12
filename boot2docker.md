@@ -82,13 +82,13 @@ $ boot2docker start
 
 ## boot2docker Quick Reference
 
-boot2docker uses the git-style command format:
+boot2docker uses the increasingly common "git"-style format:
 
 ```console
 $ boot2docker [<options>] <command> [<args>]
 ```
 
-Here's an example of how to get the VM's current status:
+For example, here's how to get the VM's current status:
 
 ```console
 $ boot2docker status
@@ -100,14 +100,14 @@ The following table, taken from "boot2docker help", summarizes the various comma
 
 | Command                 |  Description
 |-------------------------|-----------------------------------------------------------------------|
-| init                    | Create a new boot2docker VM.
-| up                      | Starts the VM, which also starts the Docker daemon
-| status                  | The current state of VM, such as "running," "saved," or "poweroff".
+| init                    | Create a new boot2docker VM.  You should only do this once to create a box.
+| up                      | Starts the VM and the Docker daemon
+| status                  | Get the current state of VM, such as "running," "saved," or "poweroff".
 | ssh [ssh-command]       | Start a shell on the VM using SSH.  If you have not set up an SSH key, you'll be prompted for a password.  (It's "tcuser")
-| save / suspend          | Suspend VM and save state to disk.
+| save / suspend          | Suspend the VM and save state to disk.
 | down / stop / halt      | Gracefully shutdown the VM.
 | restart                 | Gracefully reboot the VM.
-| delete / destroy        | Delete's the boot2docker VM and its disk image.
+| delete / destroy        | Delete the boot2docker VM and its disk image.
 | config / cfg            | Displays selected settings for the VM, such as its memory size or IP address 
 | help                    | Displays the commands in this table
 | info                    | A json dump of profile settings
