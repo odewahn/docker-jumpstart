@@ -14,7 +14,7 @@ You can find [Mac](http://docs.docker.com/installation/mac/) and [Windows](http:
 * Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines. 
 * Next, you run *boot2docker init* to create a new VM instance.  (Think of this as purchasing a new computer.)  This will create a new Linux "box" called "boot2docker-vm" on your machine that has Docker installed, as well as configure some of the basic things you'll need to communicate with it from your host.
 
-<pre data-code-language="console" data-type="programlisting">
+```console
 $ boot2docker init
 2014/08/11 13:30:58 Creating VM boot2docker-vm...
 2014/08/11 13:30:58 Apply interim patch to VM boot2docker-vm (https://www.virtualbox.org/ticket/12748)
@@ -24,7 +24,7 @@ $ boot2docker init
 2014/08/11 13:30:58 Setting NIC #2 to use host-only network "vboxnet4"...
 2014/08/11 13:30:59 Setting VM storage...
 2014/08/11 13:31:07 Done. Type `boot2docker up` to start the VM.
-</pre>
+```
 
 
 *  Next, you run *boot2docker up*  to boot up the box. (Think of this as turning your the new computer on.)  The box will start the Docker daemon that will listen to requests from our client.
@@ -102,9 +102,9 @@ $ boot2docker start
 
 boot2docker uses the git-style command format:
 
-<pre data-code-language="console" data-type="programlisting">
+```console
 $ boot2docker [<options>] <command> [<args>]
-</pre>
+```
 
 Here's an example of how to get the VM's current status:
 
