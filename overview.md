@@ -13,7 +13,7 @@ This will go through setting up a Docker image that will run a simple flask app.
 The key concepts to remember as you walk through this example include:
 
 * an *image* is a specific state of a filesystem
-* an image can have *layers* representing specific changes at a point in time
+* an image is composed of *layers* representing changes in the filesystem at various points in time; layers are a bit like the commit history of a git repository
 * a *container* is a running process that is started based on an image
 * you can change the state of the filesystem on a container and commit it to create a new image
 * changes in memory / state are not committed -- only changes on the filesystem [VERIFY THIS!]
@@ -73,11 +73,11 @@ The following table, taken from the "docker help" command, provides a quick summ
 
 
 
-## Working with images
+## Working with Images
 
 As a first step, let's use "docker pull" to grab the latest release of Ubuntu: 
 
-```
+```console
 $ docker pull ubuntu:latest
 Pulling repository ubuntu
 c4ff7513909d: Download complete 
@@ -89,15 +89,23 @@ d92c3c92fa73: Download complete
 cc58e55aa5a5: Download complete 
 ```
 
-As you lookat
+When you pull an image you'll see each dependent layer being downloaded, as well.  Once all the layers are finished downloading, you can run *docker images* to see information about what you have.  Here's an example:
 
-
-
-```
+```console
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 ubuntu              latest              c4ff7513909d        15 hours ago        225.4 MB
 ```
+
+As you can see, the command returns the following columns:
+
+* REPOSITORY.  The name of the repository.
+* TAG.  The current tag.  We'll talk more about tags in a bit, but tags are similar to those found in git or other version control systems, an represent a specific set point in the repositories' commit history.
+* IMAGE ID.  This is like the primary key for the image.  Sometimes the repository name or the tag can become detached, but you can always refer to the ID.
+* CREATED.  The date the repository was created.  Note that this is different than when it was pulled.  This can help you assess how "fresh" a build is.
+* VIRTUAL SIZE.  The size of the image.
+
+
 
 
 ## Containers
