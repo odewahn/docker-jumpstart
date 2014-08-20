@@ -1,6 +1,14 @@
 # Docker Walkthrough
 
-This will go through setting up a Docker image that will run a simple flask app.  The goal is to provide a a "Hello, world"-style introduction to the key concepts in Docker, such as images, containers, commits, tags, layers, and so forth.  We'll walk through:
+This chapter introduces the key ideas you'll use again and again in Docker, such as images, layers, containers, commits, tags, and so forth.  The main things to understand include:
+
+* an *image* is a specific state of a filesystem
+* an image is composed of *layers* representing changes in the filesystem at various points in time; layers are a bit like the commit history of a git repository
+* a *container* is a running process that is started based on an image
+* you can change the state of the filesystem on a container and commit it to create a new image
+* changes in memory / state are not committed -- only changes on the filesystem
+
+In the following section we'll walk through:
 
 * An overview of the Docker commands
 * Pulling a base image
@@ -10,15 +18,7 @@ This will go through setting up a Docker image that will run a simple flask app.
 * Running our container in daemon mode
 * Viewing our app in the browser
 
-The key concepts to remember as you walk through this example include:
-
-* an *image* is a specific state of a filesystem
-* an image is composed of *layers* representing changes in the filesystem at various points in time; layers are a bit like the commit history of a git repository
-* a *container* is a running process that is started based on an image
-* you can change the state of the filesystem on a container and commit it to create a new image
-* changes in memory / state are not committed -- only changes on the filesystem [VERIFY THIS!]
-
-## Overview of "docker run"
+## Overview of the Docker commands
 
 Like boot2docker, docker uses the git-style command format:
 
