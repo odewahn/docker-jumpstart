@@ -8,15 +8,15 @@ This chapter introduces the key ideas you'll use again and again in Docker, such
 * you can change the state of the filesystem on a container and commit it to create a new image
 * changes in memory / state are not committed -- only changes on the filesystem
 
-In the following section we'll walk through:
+In the following sections we'll walk through:
 
 * An overview of the Docker commands
 * Pulling a base image
 * Running a container based on an interactive shell
-* Install our app and its dependencies in the shell
-* Committing the container at each major checkpoint
-* Running our container in daemon mode
+* Install a "Hello, World" Flask app
 * Viewing our app in the browser
+
+Although these examples are contrived, you'll use these basic ideas again and again.  
 
 ## Overview of the Docker commands
 
@@ -457,9 +457,7 @@ $ docker rm $(docker ps -aq)
 
 ## Docker RUN Quick Reference
 
-Hopefully, this chapter has given you a good idea of the key workflows around containers and images.  Although the example is contrived, the basic workflow is something you'll use again and again.  In the next chapter on Dockerfiles I'll present a way to automate this process even further using a Dockerfile.  
-
-Until then, I'll conclude with this quick reference guide for the Docker RUN command.  Taken directly from *docker help*, this table shows how RUN is one of the most feature-rich commands in Docker. 
+Hopefully, this chapter has given you a good idea of the key workflows around containers and images.  In the next chapter on Dockerfiles I'll present a way to automate this process even further using a Dockerfile.  Until then, I'll conclude with this quick reference guide for the Docker RUN command.  Taken directly from *docker help*, this table shows how RUN is one of the most feature-rich commands in Docker. 
 
 
 
