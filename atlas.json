@@ -31,6 +31,6 @@
       "toc": false
     }
   },
-  "theme": "oreillymedia/oreilly_animal_theme",
+  "theme": "oreillymedia/animal_theme",
   "title": "Docker Jumpstart"
 }
