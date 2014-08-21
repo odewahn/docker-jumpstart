@@ -92,7 +92,7 @@ cc58e55aa5a5: Download complete
 ...
 ```
 
-As you pull the image, you'll see the progress of each dependent layer being downloaded.  Once all the layers are finished downloading (and there are a LOT of layers for Ubuntu and all the versions), you can run *docker images* to get information about the images on your system.  Here's an example:
+As you pull the image, you'll see the progress of each dependent layer being downloaded.  Once all the layers are finished downloading (and there are a LOT of layers for Ubuntu and all the versions), you can run `docker images` to get information about the images on your system.  Here's an example:
 
 ```console
 $ docker images
@@ -116,7 +116,7 @@ As you can see, the command returns the following columns:
 * CREATED.  The date the repository was created, as opposed to when it was pulled.  This can help you assess how "fresh" a particular build is.  Docker appears to update their master images on a fairly frequent basis.
 * VIRTUAL SIZE.  The size of the image.
 
-If you want a granular view of the layers in in an image, you can use *docker history*:
+If you want a granular view of the layers in in an image, you can use `docker history`:
 
 ```console
 $ docker history ubuntu:latest
@@ -130,7 +130,7 @@ d92c3c92fa73        7 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*  
 511136ea3c5a        14 months ago                                                       0 B
 ```
 
-Each line in the history corresponds to a commit of the image's filesystem.  The values in the SIZE column add up to the corresponding VIRTUAL SIZE column for the image in *docker image*. (If you decide to double check this, remember to that the column has units, so be sure to convert all values to MB.)  
+Each line in the history corresponds to a commit of the image's filesystem.  The values in the SIZE column add up to the corresponding VIRTUAL SIZE column for the image in `docker image`. (If you decide to double check this, remember to that the column has units, so be sure to convert all values to MB.)  
 
 There are a couple of key things to understand about the layers in a docker images:
 
@@ -139,7 +139,7 @@ There are a couple of key things to understand about the layers in a docker imag
 
 ## Working with Containers
 
-So, now that you've got an image, we use *docker run* to start a new container.  Here's the format for the command:
+So, now that you've got an image, we use `docker run` to start a new container.  Here's the format for the command:
 
 ```console
 $ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
@@ -151,7 +151,7 @@ The command consists of:
 * IMAGE.  The name of the image that the container should start from.
 * COMMAND.  The command that should run *on the container when it starts*.  
 
-So, let's try a simple command to to start a new container using the latest version of Ubuntu.  Once this container starts, you'll be at a bash shell where you can do "cat /etc/os-release" to see the release information about the OS:
+So, let's try a simple command to to start a new container using the latest version of Ubuntu.  Once this container starts, you'll be at a bash shell where you can do `cat /etc/os-release` to see the release information about the OS:
 
 ```console
 $ docker run -it ubuntu:latest /bin/bash
@@ -199,7 +199,7 @@ This command will tell you:
 * The exposed ports (lot's more on this!)
 * A human readable NAME that you can use in place of the ID (this is something you can also assign yourself, which we'll get into shortly.)
 
-Now try the "docker diff" command:
+Now try the `docker diff` command:
 
 ```console
 $ docker diff jolly_perlman
@@ -214,7 +214,7 @@ $ docker commit -m "Adding hello world" jolly\_perlman hello\_docker
 5af244124dd8656f553731b9c60e21872f34e7c5532b85dcc7052fcf5e2cf2ef
 ```
 
-Taking another look at *docker images* shows the effect; we now have a new image called "hello\_docker" that includes our "/tmp/hello.txt" file.  Taking a quick look at the container's history shows how our change added a whopping new 12 byte layer on top of the original layers of ubuntu:latest.
+Taking another look at `docker images` shows the effect; we now have a new image called "hello\_docker" that includes our "/tmp/hello.txt" file.  Taking a quick look at the container's history shows how our change added a whopping new 12 byte layer on top of the original layers of ubuntu:latest.
 
 ```console
 $ docker history hello_docker
