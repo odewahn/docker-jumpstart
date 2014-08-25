@@ -302,6 +302,7 @@ Whew.  That's a lot of stuff to install, so let's commit the image with a simple
 ```console
 $ docker commit -m "installed python and flask" simple_flask
 c21c062b086aeebc6dd994710eef420ad087ce7bc4cbe03109089bd425497035
+```
 
 So, now if you check your "docker images" you'll see the new repository:
 
@@ -324,6 +325,7 @@ ubuntu              latest              c4ff7513909d        7 days ago          
 
 Finally, taking a quick look at the history shows that we've loaded about 160MB worth of new stuff onto our image:
 
+```console
 $ docker history simple_flask
 IMAGE               CREATED             CREATED BY                                      SIZE
 c21c062b086a        2 days ago          /bin/bash                                       160.3 MB
@@ -334,6 +336,7 @@ d92c3c92fa73        7 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*  
 9942dd43ff21        7 days ago          /bin/sh -c echo '#!/bin/sh' > /usr/sbin/polic   194.5 kB
 1c9383292a8f        7 days ago          /bin/sh -c #(nop) ADD file:c1472c26527df28498   192.5 MB
 511136ea3c5a        14 months ago                                                       0 B
+```
 
 ### Install our code
 
@@ -412,7 +415,7 @@ Hello World!
 
 ### Cleaning up
 
-If you're really excited about your "Hello World!" Flask app, you should feel free to commit it.  Otherwise, let's kill is.  First, we need to figure out its ID, which we'll do using "docker ps":
+If you're really excited about your "Hello World!" Flask app, you should feel free to commit it.  Otherwise, let's kill it.  First, we need to figure out its ID, which we'll do using "docker ps":
 
 ```console
 $ docker ps -a
@@ -438,9 +441,9 @@ CONTAINER ID        IMAGE                 COMMAND             CREATED           
 ef9bd2df07c6        ubuntu:latest         /bin/bash           4 days ago          Exited (0) 13 hours ago                         simple_flask        
 ```
 
-As you'll see, although the container has stopped running (i.e., it's status has changed from Up to Exited), the container itself is still there.  In fact, unless you use the "-rm" option when you start a container, it will always leave this remnant image behind.  And, if left unchecked, after a while you'll consume your entire disk with stopped containers.  
+As you'll see, although the container has stopped running (i.e., its status has changed from Up to Exited), the container itself is still there.  In fact, unless you use the "-rm" option when you start a container, it will always leave this remnant image behind.  And, if left unchecked, after a while you'll consume your entire disk with stopped containers.  
 
-Why is it like this, you might ask?  The answer lies in Docker's need to get a clean files tate for a commit.  In a container is running, it can mean that there are open files or processes that could interfere with the ability to save the state of the filesystem.  So, rather than destroy the container automatically, Docker saves its state so that you can get a nice, clean commit image.  So, killing the image is really the same as just pausing it.  
+Why is it like this, you might ask?  The answer lies in Docker's need to get a clean files state for a commit.  In a container is running, it can mean that there are open files or processes that could interfere with the ability to save the state of the filesystem.  So, rather than destroy the container automatically, Docker saves it to enable you to get a nice, clean commit image.  So, killing the image is really the same as just pausing it.  
 
 So, to get rid of this ghost container, you need to use "docker rm":
 
