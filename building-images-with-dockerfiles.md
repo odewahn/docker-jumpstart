@@ -35,8 +35,18 @@ The following table summarizes the instructions; many of these options map direc
 | VOLUME     | Creates a shared volume that can be shared among containers or by the host machine
 | WORKDIR    | Set the default working directory for the container
 
+Once you've created a Dockerfile and added all your instructions, you can use it to build an image using the `docker build` command.  The format for this command is:
 
-## Building the image
+```
+docker build [OPTIONS] PATH | URL | -
+```
+
+The build command results in a new image that you can start using `docker run`, just like any other image.  Each line in the Dockerfile will correspond to a layer in the images' commit history.
+
+
+## Example of building an image from a Dockerfile
+
+Perhaps the best way to understand a Dockerfile is to dive into an example.  Let's take a look at the example we went through in our overview chapter and condense it into a Dockerfile:
 
 ```
 #
@@ -55,11 +65,14 @@ WORKDIR /home
 
 ```
 
+As you can see, it's pretty straightforward: we start from "ubuntu:latest," install dependencies with the `RUN` command, add our code file with the `ADD` command, and then set the default directory for when the container starts.  Once we have a Dockerfile itself, we can build an image using `docker build`, like this:
+
+
 ```
 $ docker build -t "simple_flask:dockerfile" .
 ```
 
-
+The "-t" flag adds a tag to the image so that it gets a nice repository name and tag. Also not the final ".", which tells Docker to use the Dockerfile in the current directory.  Once you start the build, you'll see it churn away for a while installing things, and when it completes, you'll have a brand new image.  Running `docker history` will show you the effect of each command has on the overall size of the file:
 
 ```console
 $ docker history simple_flask:dockerfile
@@ -79,9 +92,18 @@ d92c3c92fa73        9 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*  
 511136ea3c5a        14 months ago                                                       0 B
 ```
 
-
+Finally, you can start the container itself with the following command:
 
 ```console
 $ docker run -p 5000:5000 simple_flask:dockerfile python hello.py
 ```
 
+Notice that in this example we're running the Flask app directly when we start the container, rather than just running the bash shell and starting it as we've done in other examples.
+
+## Dockerfiles vs. Infrastructure Auotmation (IA)
+
+Dockerfiles provide a relatively simple way to create a base image.  And, because you can use the FROM command to chain Dockerfiles together into increasingly complex images, you can do quite a lot, even with a relatively (and refreshingly!) minimal command set.  But, if you already have an existing IA tool (and you should!), such as [Chef](http://www.getchef.com/), [Puppet](http://puppetlabs.com/), [Ansible](http://www.ansible.com/home), [Salt](http://www.saltstack.com/), it's very unlikely you could or even should rewrite everything.  So, if you're in this situation what can you do?
+
+```
+I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
+```

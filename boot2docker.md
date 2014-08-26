@@ -5,6 +5,7 @@ Docker's underlying containerization technology only works on Linux.  To use it 
 So, the idea behind boot2docker is really quite clever: since we can't run Docker natively on Windows or a Mac, we install a bare-bones Linux VM that *can* run Docker, and then we communicate with it using a Docker client running on our host (i.e., the terminal on our main OS).  If you've ever used a package like Postgres or MySql, it's exactly the same idea: you have a client tool that you use to issue commands to another server.  The main difference is that our "docker" process is running inside a VM, rather than as a native service.  
 
 This chapter will walk you through the installation process.  Since both Docker and boot2docker are changing so rapidly, rather than describe the detailed steps here, I've provided an overview of the process so that you'll understand what's happening. 
+
 ## Install boot2docker
 
 Before you start, it's a good idea to first set up SSH on your host machine so that boot2docker can install your login credentials on the VM.  Otherwise, you'll be prompted for a password whenever you log in.  If you're unfamiliar with SSH or SSH keys, Appendix ??? will give you details of how to get set up.
