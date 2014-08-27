@@ -30,7 +30,7 @@ The following table summarizes the instructions; many of these options map direc
 | FROM       | The base image to use in the build.  This is mandatory and must be the first command in the file.
 | MAINTAINER | An optional value for the maintainer of the script
 | ONBUILD    | A command that is triggered when the image in the Dcokerfile is used as a base for another image
-| RUN        | Executes a shell command and save the results on a new layer
+| RUN        | Executes a command and save the result as a new layer
 | USER       | Sets the default user within the container 
 | VOLUME     | Creates a shared volume that can be shared among containers or by the host machine
 | WORKDIR    | Set the default working directory for the container
@@ -102,8 +102,9 @@ Notice that in this example we're running the Flask app directly when we start t
 
 ## Dockerfiles vs. Infrastructure Auotmation (IA)
 
-Dockerfiles provide a relatively simple way to create a base image.  And, because you can use the FROM command to chain Dockerfiles together into increasingly complex images, you can do quite a lot, even with a relatively (and refreshingly!) minimal command set.  But, if you already have an existing IA tool (and you should!), such as [Chef](http://www.getchef.com/), [Puppet](http://puppetlabs.com/), [Ansible](http://www.ansible.com/home), [Salt](http://www.saltstack.com/), it's very unlikely you could or even should rewrite everything.  So, if you're in this situation what can you do?
+Dockerfiles provide a relatively simple way to create a base image.  And, because you can use the FROM command to chain Dockerfiles together into increasingly complex images, you can do quite a lot, even with Docker's (refreshingly!) minimal command set.  But, if you already have an existing IA tool (and you should!), such as [Chef](http://www.getchef.com/), [Puppet](http://puppetlabs.com/), [Ansible](http://www.ansible.com/home), [Salt](http://www.saltstack.com/), it's very unlikely you could or even should rewrite everything.  So, if you're in this situation what can you do?
 
-```
+
+
 I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
-```
+
