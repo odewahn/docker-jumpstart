@@ -8,27 +8,35 @@
     "overview.md",
     "building-images-with-dockerfiles.md",
     "dockerhub.md",
-    "linking-containers.md",
-    "development-workflow.md"
+    "linking-containers.md"
   ],
   "formats": {
     "pdf": {
       "version": "web",
       "index": false,
-      "toc": true
+      "toc": true,
+      "syntaxhighlighting": false,
+      "show_comments": false
     },
     "epub": {
       "index": false,
       "toc": false,
-      "epubcheck": false
+      "epubcheck": false,
+      "syntaxhighlighting": false,
+      "show_comments": false
     },
     "mobi": {
       "index": false,
-      "toc": false
+      "toc": false,
+      "syntaxhighlighting": false,
+      "show_comments": false
     },
     "html": {
       "index": false,
-      "toc": false
+      "toc": false,
+      "syntaxhighlighting": false,
+      "show_comments": false,
+      "consolidate": false
     }
   },
   "theme": "oreillymedia/oreilly_pocketref_theme",
