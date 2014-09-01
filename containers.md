@@ -1,4 +1,4 @@
-# Containers
+# Containers: Running instances of an Image
 
 A container is a running image that you start with the `docker run` command, like this:
 
