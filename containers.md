@@ -126,11 +126,11 @@ The next chapter will provide much more detail on how to create your own contain
 | --net="bridge"           |  Set the Network mode for the container
 |                          |    'bridge': creates a new network stack for the container on the docker bridge
 |                          |    'none': no networking for this container
-|                          |    'container:<name \| id>': reuses another container network stack
+|                          |    'container:<name &#124; id>': reuses another container network stack
 |                          |    'host': use the host network stack inside the container.  Note: the host mode gives the container full access to local system services such as D-bus and is therefore considered insecure.
 | -P, --publish-all=false  |  Publish all exposed ports to the host interfaces
 | -p, --publish=[]         |  Publish a container's port to the host
-|                          |    format: ip:hostPort:containerPort \| ip::containerPort \| hostPort:containerPort
+|                          |    format: ip:hostPort:containerPort &#124; ip::containerPort &#124; hostPort:containerPort
 |                          |    (use 'docker port' to see the actual mapping)
 | --privileged=false       |  Give extended privileges to this container
 | --rm=false               |  Automatically remove the container when it exits (incompatible with -d)
