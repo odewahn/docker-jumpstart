@@ -37,4 +37,4 @@ As of this writing, we get over 1300 results.
 
 ## Pushing an image
 
-## A some interesting images
+## A tour of interesting images
