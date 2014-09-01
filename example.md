@@ -11,7 +11,7 @@ Now that we've got the basics, let's make something a tiny bit more realistic: a
 
 Again, the point here is not to show the best way to set up an environment, but instead to illustrate the Docker commands and what they do.  I'll code development environments in more detail later.
 
-### Start the "simple\_flask" container
+## Start the "simple\_flask" container
 
 Our first step is to start a new container based on "ubuntu:latest."  As we did in the previous example, we'll make it interactive using the "-it" options, but this time we'll give it our own name:
 
@@ -27,7 +27,7 @@ PID                 USER                COMMAND
 969                 root                /bin/bash
 ```
 
-###  Install the dependencies
+##  Install the dependencies
 
 Now that we've got the container running, we install the dependencies we need.  First, since Flask is a Python micro framework, let's check out what version of Python we have:
 
@@ -97,7 +97,7 @@ d92c3c92fa73        7 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*  
 511136ea3c5a        14 months ago                                                       0 B
 ```
 
-### Install our code
+## Install our code
 
 Let's get our code installed.  First, fire up a new container:
 
@@ -145,7 +145,7 @@ root@2f5ada6523c4:/home# python hello.py
  * Running on http://127.0.0.1:5000/
 ```
 
-### View the flask app on your host machine
+## View the flask app on your host machine
 
 We're ready for the big reveal.  On a terminal on your host, try this command:
 
@@ -172,7 +172,7 @@ $ curl localhost:5000
 Hello World!
 ```
 
-### Cleaning up
+## Cleaning up
 
 If you're really excited about your "Hello World!" Flask app, you should feel free to commit it.  Otherwise, let's kill it.  First, we need to figure out its ID, which we'll do using "docker ps":
 
