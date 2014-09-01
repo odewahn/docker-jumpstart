@@ -1,83 +1,8 @@
-# Docker Walkthrough
+# Working with Images
 
-This chapter introduces the key ideas you'll use again and again in Docker, such as images, layers, containers, commits, tags, and so forth.  The main things to understand include:
+A Docker *image* represents a snapshot of a filesystem at a certain point in time.  As mentioned in the introduction, the image is composed of layers that progressively stack on top of each other; containers (running instances of an image) can share these layers among them, which is one reason Docker is so much lighter weight than a full VM, where nothing is generally shared.  
 
-* an *image* is a specific state of a filesystem
-* an image is composed of *layers* representing changes in the filesystem at various points in time; layers are a bit like the commit history of a git repository
-* a *container* is a running process that is started based on an image
-* you can change the state of the filesystem on a container and commit it to create a new image
-* changes in memory / state are not committed -- only changes on the filesystem
-
-In the following sections we'll walk through:
-
-* An overview of the Docker commands
-* Pulling a base image
-* Running a container based on an interactive shell
-* Install a "Hello, World" Flask app
-* Viewing our app in the browser
-
-Although these examples are contrived, you'll use these basic ideas again and again.  
-
-## Overview of the Docker commands
-
-Like boot2docker, docker uses the git-style command format:
-
-```console
-$ docker [OPTIONS] COMMAND [arg...]
-```
-
-The following table, taken from the "docker help" command, provides a quick summary of the commands.  
-
-
-| Command  |  Description
-|----------|-----------------------------------------------------------------------|
-| attach   | Attach to a running container
-| build    | Build an image from a Dockerfile
-| commit   | Create a new image from a container's changes
-| cp       | Copy files/folders from a container's filesystem to the host path
-| diff     | Inspect changes on a container's filesystem
-| events   | Get real time events from the server
-| export   | Stream the contents of a container as a tar archive
-| history  | Show the history of an image
-| images   | List images
-| import   | Create a new filesystem image from the contents of a tarball
-| info     | Display system-wide information
-| inspect  | Return low-level information on a container
-| kill     | Kill a running container
-| load     | Load an image from a tar archive
-| login    | Register or log in to the Docker registry server
-| logs     | Fetch the logs of a container
-| port     | Lookup the public-facing port that is NAT-ed to PRIVATE_PORT
-| pause    | Pause all processes within a container
-| ps       | List containers
-| pull     | Pull an image or a repository from a Docker registry server
-| push     | Push an image or a repository to a Docker registry server
-| restart  | Restart a running container
-| rm       | Remove one or more containers
-| rmi      | Remove one or more images
-| run      | Run a command in a new container
-| save     | Save an image to a tar archive
-| search   | Search for an image on the Docker Hub
-| start    | Start a stopped container
-| stop     | Stop a running container
-| tag      | Tag an image into a repository
-| top      | Lookup the running processes of a container
-| unpause  | Unpause a paused container
-| version  | Show the Docker version information
-| wait     | Block until a container stops, then print its exit code
-
-As you scan the list (which I've left in alphabetical order), you'll notice 3 key groups of commands:
-
-* Commands related to managing *images*, such as *images*, *build*, *save*, *rmi*, and *tag*.
-* Commands related to *containers*, such as *run*, *ps*, *kill*, *restart*, *top*, and *pause*.
-* Commands related to the [Docker hub](https://hub.docker.com/), such as *login*, *search*, *pull*, and *push*. (More on this in the next chapter.) 
-
-The following sections (and other parts of this guide) show how you use the first two groups of commands to create custom images; we'll explore the final group in its own chapter.
- 
-
-## Working with Images
-
-As a first step, let's use "docker pull" to grab the latest release of Ubuntu (we'll talk more about where you're actually pulling from in the chapter on the Docker Hub): 
+Perhaps the best way to start (after you get Docker installed, of course!) is to use "docker pull" to grab the latest release of Ubuntu (we'll talk more about where you're actually pulling from in the chapter on the Docker Hub): 
 
 ```console
 $ docker pull ubuntu
