@@ -4,7 +4,7 @@ A container is a running image that you start with the `docker run` command, lik
 
 ```console
 $ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
-````
+```
 
 The command consists of:
 

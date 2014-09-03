@@ -100,7 +100,7 @@ $ docker run -p 5000:5000 simple_flask:dockerfile python hello.py
 
 Notice that in this example we're running the Flask app directly when we start the container, rather than just running the bash shell and starting it as we've done in other examples.
 
-## Dockerfiles vs. Infrastructure Auotmation (IA)
+## Dockerfiles vs. Infrastructure Automation (IA)
 
 Dockerfiles provide a relatively simple way to create a base image.  And, because you can use the FROM command to chain Dockerfiles together into increasingly complex images, you can do quite a lot, even with Docker's (refreshingly!) minimal command set.  But, if you already have an existing IA tool (and you should!), such as [Chef](http://www.getchef.com/), [Puppet](http://puppetlabs.com/), [Ansible](http://www.ansible.com/home), [Salt](http://www.saltstack.com/), it's very unlikely you could or even should rewrite everything.  So, if you're in this situation what can you do?
 
