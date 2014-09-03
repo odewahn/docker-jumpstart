@@ -40,6 +40,6 @@
       "consolidate": false
     }
   },
-  "theme": "oreillymedia/oreilly_pocketref_theme",
+  "theme": "oreillymedia/clean_theme",
   "title": "Docker Jumpstart"
 }
