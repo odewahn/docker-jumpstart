@@ -190,4 +190,4 @@ This will create a port forwarding rule that in VirtualBox that will last until 
 
 <img src="images/vboxmanage.png"/>
 
-You can find out more about this tool in the extensive [VirtualBox documention](https://www.virtualbox.org/manual/UserManual.html) site.
+You can find out more about this tool in the extensive [VirtualBox documentation](https://www.virtualbox.org/manual/UserManual.html) site.

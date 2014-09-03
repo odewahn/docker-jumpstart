@@ -60,7 +60,7 @@ Whew.  That's a lot of stuff to install, so let's commit the image with a simple
 
 ```console
 $ docker commit -m "installed python and flask" simple_flask
-c21c062b086aeebc6dd994710eef420ad087ce7bc4cbe03109089bd425497035
+c21c062b...
 ```
 
 So, now if you check your "docker images" you'll see the new repository:
