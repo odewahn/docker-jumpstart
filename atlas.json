@@ -34,8 +34,8 @@
     },
     "html": {
       "index": false,
-      "toc": false,
-      "syntaxhighlighting": false,
+      "toc": true,
+      "syntaxhighlighting": true,
       "show_comments": false,
       "consolidate": false
     }
