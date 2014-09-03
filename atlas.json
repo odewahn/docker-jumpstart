@@ -34,12 +34,12 @@
     },
     "html": {
       "index": false,
-      "toc": false,
-      "syntaxhighlighting": false,
+      "toc": true,
+      "syntaxhighlighting": true,
       "show_comments": false,
       "consolidate": false
     }
   },
-  "theme": "oreillymedia/clean_theme",
+  "theme": "oreillymedia/oreilly_pocketref_theme",
   "title": "Docker Jumpstart"
 }
