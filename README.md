@@ -1,6 +1,6 @@
 # Docker Jumpstart, by Andrew Odewahn
 
-This is the source for the Docker Jumpstart, a short guide to help you get get up and running with [Docker](https://www.docker.com/).  The table of contents is:
+This is the source for the Docker Jumpstart, a short guide by Andrew Odewahn from [O'Reilly Media](http://www.oreilly.com/) to help you get get up and running with [Docker](https://www.docker.com/).  It's table of contents is:
 
 * [Introduction](introduction.md).  A basic intro about what Docker is and isn't.
 * [boot2docker](boot2docker.md).  How to get Docker running on Mac or Windows.
@@ -9,6 +9,7 @@ This is the source for the Docker Jumpstart, a short guide to help you get get u
 * [Creating your own Docker Image](example.md).  Putting everything together to make your own images.
 * [Building images with Dockerfiles]("building-images-with-dockerfiles.md").  Dockerfiles, a lightweight IA tool to describe an images contents.  
 * [Sharing images on Docker Hub](dockerhub.md).  Finding and sharing images with the world.
+* [Additional Resources](additional-resources.md).  Where to learn more once you've mastered the basics of Docker.
 
 
 ## Contributing
