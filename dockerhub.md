@@ -1,4 +1,4 @@
-# Sharing images on DockerHub
+# Sharing images on Docker Hub
 
 The [Docker Hub](https://hub.docker.com) is a site where you store and share images you create.  Consciously modeled on [GitHub](https://github.com/), the site offers features like:
 
