@@ -41,7 +41,7 @@
       "consolidate": false
     }
   },
-  "theme": "oreillymedia/clean_theme",
+  "theme": "oreillymedia/atlas_tech1c_theme",
   "title": "Docker Jumpstart",
   "github_url": "https://github.com/odewahn/docker-jumpstart",
   "follow": "odewahn"
