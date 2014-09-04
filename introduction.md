@@ -1,17 +1,18 @@
 # Introduction
 
-NEED TO WRITE THIS
+
+Docker is a tool for packaging and shipping apps.  Based on the idea of a shipping container, it provides a standardized way for developers or system administrators to create lightweight images, or collections of images, for each element of an application, and then easily and quickly deploy the image.  Since the image is standardized, it can be uniformly deployed on development or production, leading to a much simpler workflow, faster development time for the dev team, and lower management overhead for the ops team.   
 
 First, a quick overview of a few things Docker *is*:
 
-* An open source tool that places a layer on top of Linux containers to make it simple to package and ship complex apps
-* A company that manages the tool, as well as a site called the "Docker Hub" for sharing containers
+* An open source tool that places a layer on top of Linux containers (LXC) to make it simple to package and ship complex apps
+* A tool for creating a layered filesystem; each layer is versioned and can be shared across running instances, making for much more lightweight deployments
+* A company behind the project, as well as a site called the "Docker Hub" for sharing containers
 
 And, a few things Docker *isn't*:
 
-* A virtual machine
-* An infrastructure automation tool, like Puppet or Chef
-
+* A virtual machine.  Unlike a true VM, a docker container does not also require a host OS, meaning it's much slimmer than a real VM
+* An infrastructure automation tool, like Puppet or Chef.  Like those other tools, Docker is a major player in the DevOps space, but its focus is around running apps in a container environment, as opposed to representing a machine state.
 
 This guide introduces the key ideas you'll use again and again in Docker, such as images, layers, containers, commits, tags, and so forth.  The main things to understand include:
 
