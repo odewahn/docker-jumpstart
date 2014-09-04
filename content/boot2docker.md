@@ -188,6 +188,6 @@ $ VBoxManage controlvm boot2docker-vm natpf1 "rails-server,tcp,127.0.0.1,4567,,4
 
 This will create a port forwarding rule that in VirtualBox that will last until you destroy the box.  You can also create this rule in the VirtualBox GUI tool in the "Settings -> Network -> Port Forwarding" screen, as shows in the next figure.
 
-<img src="images/vboxmanage.png"/>
+<img src="/images/vboxmanage.png"/>
 
 You can find out more about this tool in the extensive [VirtualBox documentation](https://www.virtualbox.org/manual/UserManual.html) site.

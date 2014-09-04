@@ -18,7 +18,7 @@ There are a number of features specific Docker.  One of the most interesting, [t
 
 The first to using Docker hub is to sign up, which you can do on their [Signup page](https://hub.docker.com/account/signup/).  You'll be asked for an email address, username, and a password.  Once you login, you'll see a project dashboard that's similar to other hosting sites:
 
-<img src="images/docker-hub.png"/>
+<img src="/images/docker-hub.png"/>
 
 Once you've set up your account, you use the `docker login` command from your terminal so that you can pull and push images from your account.  (Note that you can also register with this command, as well, if you want to not use the site.)  Once you login, your docker will store your credentials in a file called `.dockercfg` in your home directory.
 
