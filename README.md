@@ -2,14 +2,14 @@
 
 This is the source for the Docker Jumpstart, a short guide by Andrew Odewahn from [O'Reilly Media](http://www.oreilly.com/) to help you get get up and running with [Docker](https://www.docker.com/).  It's table of contents is:
 
-* [Introduction](introduction.md).  A basic intro about what Docker is and isn't.
-* [boot2docker](boot2docker.md).  How to get Docker running on Mac or Windows.
-* [Images: Layered filesystems](images.md).  A brief explanation of images and layers.
-* [Containers: Running instances of an Image](containers.md).  Using `docker run` to turn a static image into a running container.
-* [Creating your own Docker Image](example.md).  Putting everything together to make your own images.
-* [Building images with Dockerfiles]("building-images-with-dockerfiles.md").  Dockerfiles, a lightweight IA tool to describe an images contents.  
-* [Sharing images on Docker Hub](dockerhub.md).  Finding and sharing images with the world.
-* [Additional Resources](additional-resources.md).  Where to learn more once you've mastered the basics of Docker.
+* [Introduction](content/introduction.md).  A basic intro about what Docker is and isn't.
+* [boot2docker](content/boot2docker.md).  How to get Docker running on Mac or Windows.
+* [Images: Layered filesystems](content/images.md).  A brief explanation of images and layers.
+* [Containers: Running instances of an Image](content/containers.md).  Using `docker run` to turn a static image into a running container.
+* [Creating your own Docker Image](content/example.md).  Putting everything together to make your own images.
+* [Building images with Dockerfiles]("content/building-images-with-dockerfiles.md").  Dockerfiles, a lightweight IA tool to describe an images contents.  
+* [Sharing images on Docker Hub](content/dockerhub.md).  Finding and sharing images with the world.
+* [Additional Resources](content/additional-resources.md).  Where to learn more once you've mastered the basics of Docker.
 
 
 ## Contributing
