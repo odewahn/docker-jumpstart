@@ -1,6 +1,6 @@
 # Docker Jumpstart, by Andrew Odewahn
 
-This is the source for the Docker Jumpstart, a short guide by Andrew Odewahn from [O'Reilly Media](http://www.oreilly.com/) to help you get get up and running with [Docker](https://www.docker.com/).  It's table of contents is:
+This is the source for the Docker Jumpstart, a short guide by Andrew Odewahn from [O'Reilly Media](http://www.oreilly.com/) to help you get get up and running with [Docker](https://www.docker.com/).  Its table of contents is:
 
 * [Introduction](content/introduction.md).  A basic intro about what Docker is and isn't.
 * [boot2docker](content/boot2docker.md).  How to get Docker running on Mac or Windows.
