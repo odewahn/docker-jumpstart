@@ -9,7 +9,8 @@
     "containers.md",
     "example.md",
     "building-images-with-dockerfiles.md",
-    "dockerhub.md"
+    "dockerhub.md",
+    "additional-resources.md"
   ],
   "formats": {
     "pdf": {
