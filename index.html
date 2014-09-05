@@ -14,7 +14,7 @@
    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
    <link rel="stylesheet" type="text/css" href="assets/html.css"/>
-
+   <link rel="stylesheet" type="text/css" href="assets/index.css"/>
 
   </head>
 
@@ -22,14 +22,10 @@
 	
     <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
     <header>
-      <img class="logo" src="http://orm-logo-service.herokuapp.com/velocity/logo.svg"/>
-      <h1>Docker Jumpstart</h1>
+      <h1>Docker Jumpstart by Andrew Odewahn</h1>
     </header>
         
-	
-
-
-    <div class="container">
+    <div class="container index">
 
       <div class="row">
         <div class="col-md-6">
@@ -41,7 +37,7 @@
 		     </a>
 	          </div>
 	          <div class="col-md-6">
-	             <a href="https://s3.amazonaws.com/orm-atlas-media/dds-field-guide.pdf" class="btn btn-block btn-lg btn-success">Download <span class="glyphicon glyphicon-download"></span></a>
+	             <a href="https://s3.amazonaws.com/orm-atlas-media/docker-jumpstart-2014-09-03.pdf" class="btn btn-block btn-lg btn-success">Download <span class="glyphicon glyphicon-download"></span></a>
 	          </div>
 	    </div>
         </div>
@@ -57,17 +53,35 @@
 	</div>
 	
         </div>
-      </div>
 
       <div class="row">
 	<div class="col-md-6 toc">
            <h2>Contents</h2>	
-           <ol class="toc-list">
-              <li>
-                 <span class="fa fa-cloud fa-5x fa-border"></span>
-	         <a href="ch02.html">Introduction.</a>
-	      </li>
-            </ol>      
+              <div class="chapter clearfix">
+                 <span class="fa fa-th fa-2x fa-border"></span> <a href="ch01.html">Introduction</a>
+              </div>
+              <div class="chapter clearfix">
+                 <span class="fa fa-laptop fa-2x fa-border"></span> <a href="ch02.html">Using boot2docker to run Docker on a Mac or Windows</a>
+              </div>
+              <div class="chapter clearfix">
+                 <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="ch03.html">Images: Layered filesystems</a>
+              </div>
+              <div class="chapter clearfix">
+                 <span class="fa fa-bolt fa-2x fa-border"></span> <a href="ch03.html">Containers: Running instances of an Image</a>
+              </div>
+              <div class="chapter clearfix">
+                 <span class="fa fa-gears fa-2x fa-border"></span> <a href="ch03.html">Creating your own Docker Image</a>
+              </div>	
+              <div class="chapter clearfix">
+                 <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="ch03.html">Building images with Dockerfiles</a>
+              </div>	
+              <div class="chapter clearfix">
+                 <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="ch03.html">Sharing images on Docker Hub</a>
+              </div>	
+              <div class="chapter clearfix">
+                 <span class="fa fa-book fa-2x fa-border"></span> <a href="ch03.html">Additional Resources</a>
+              </div>	
+	
         </div>
 
 	<div class="col-md-6 testimonials">
@@ -86,11 +100,15 @@
 
   </div>
 
+ </div>
+
+
 </div>
-
-
-    </div>
   
-  </body>
+<footer>
+   <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg"/>
+</footer>
+
+</body>
 
 </html>
