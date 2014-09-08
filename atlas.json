@@ -14,7 +14,7 @@
   ],
   "formats": {
     "pdf": {
-      "version": "web",
+      "version": "print",
       "index": false,
       "toc": true,
       "syntaxhighlighting": false,
