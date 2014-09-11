@@ -11,6 +11,8 @@ This is the source for the Docker Jumpstart, a short guide by Andrew Odewahn fro
 * [Sharing images on Docker Hub](content/dockerhub.md).  Finding and sharing images with the world.
 * [Additional Resources](content/additional-resources.md).  Where to learn more once you've mastered the basics of Docker.
 
+Topics I'd love to cover in more depth are in the [wishlist](wishlist/) directory. Most of this stuff is just a place to keep links and research will (OK, might) someday lead to a more in-depth coverage.
+
 
 ## Contributing
 
