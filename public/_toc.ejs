@@ -1,0 +1,11 @@
+
+<% 
+   var contents = public._data["contents"];
+   for (var c in contents) { 
+%>
+
+   <div class="toc-element clearfix">
+      <span class="fa <%= contents[c].icon %> fa-2x fa-border"></span> <a href="<%= c %>.html"><%= contents[c].title %></a>
+   </div>
+
+<% }; %>

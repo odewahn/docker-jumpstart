@@ -1,0 +1,9 @@
+<% public._data["testimonials"].forEach(function(c) { %>
+   <div class="testimonial clearfix">
+      <img style="width: 120px;" class="testimonial-img" src="<%= c["image"] %>"/>
+      <blockquote class="quote">
+         <%= c["testimonial"] %>
+         <cite class="clearfix source"><%= c["name"] %></cite>
+      </blockquote>    
+   </div>
+<% }); %>

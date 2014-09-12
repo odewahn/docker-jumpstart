@@ -1,20 +1,20 @@
 {
   "branch": "master",
   "files": [
-    "content/coverpage.html",
-    "content/toc.md",
-    "content/introduction.md",
-    "content/boot2docker.md",
-    "content/images.md",
-    "content/containers.md",
-    "content/example.md",
-    "content/building-images-with-dockerfiles.md",
-    "content/dockerhub.md",
-    "content/additional-resources.md"
+    "print-only/coverpage.html",
+    "print-only/toc.md",
+    "public/introduction.md",
+    "public/boot2docker.md",
+    "public/docker-images.md",
+    "public/containers.md",
+    "public/building-images-with-dockerfiles.md",
+    "public/example.md",
+    "public/dockerhub.md",
+    "public/additional-resources.md"
   ],
   "formats": {
     "pdf": {
-      "version": "print",
+      "version": "web",
       "index": false,
       "toc": true,
       "syntaxhighlighting": false,
@@ -35,16 +35,12 @@
     },
     "html": {
       "index": false,
-      "toc": true,
-      "syntaxhighlighting": true,
+      "toc": false,
+      "syntaxhighlighting": false,
       "show_comments": false,
       "consolidate": false
     }
   },
-  "theme": "oreillymedia/oreilly_pocketref_theme",
-  "title": "Docker Jumpstart",
-  "github_user": "odewahn",
-  "github_url": "https://github.com/odewahn/docker-jumpstart",
-  "github_repo": "docker-jumpstart",
-  "twitter_user": "odewahn"
+  "theme": "oreillymedia/atlas_tech1c_theme",
+  "title": "harp site test"
 }

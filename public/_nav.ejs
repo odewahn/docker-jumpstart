@@ -1,0 +1,52 @@
+<%
+   function getNavLinks(contents,currentPage) {
+      var retVal = {};  // here's our payload
+      var contents = Object.keys(contents);   //flatten hash keys to an ordered list
+      // only display a nav is there's more than one item
+      if (contents.length > 1) {
+         var idx = contents.indexOf(currentPage);  // find the current page in the list
+         switch (idx) {
+            case -1:   
+               //the element is not found at all
+               break;
+            case 0: 
+               // on the first page, so there is no previous link
+               retVal["next"] = contents[idx+1];
+               break;
+            case (contents.length -1): 
+               // on the last page, so there is no next page
+               retVal["prev"] = contents[idx-1];
+               break;
+            default:
+               // page is in the middle, so show both links
+               retVal["prev"] = contents[idx-1];
+               retVal["next"] = contents[idx+1];
+               break;        
+         }
+      }
+      return retVal;  // return the payload
+   }
+
+   var contents = public._data["contents"];
+
+   var navLinks = getNavLinks(contents, current.source);
+%>
+
+<div class="nav-buttons">
+<ul class="nav nav-pills">
+   <% if (navLinks["prev"]) { %>
+      <li>
+         <a href="<%= navLinks["prev"] %>.html" title="<%= contents[navLinks["prev"]]["title"] %>"> 
+            <span class="glyphicon glyphicon-chevron-left"/> Previous
+         </a>
+      </li>
+   <% } %>
+   <% if (navLinks["next"]) { %>
+      <li>
+         <a href="<%= navLinks["next"] %>.html" title="<%= contents[navLinks["next"]]["title"] %>"> 
+            Next <span class="glyphicon glyphicon-chevron-right"/>
+         </a>
+      </li>
+   <% } %>
+</ul>
+</div>
