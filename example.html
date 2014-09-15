@@ -60,6 +60,7 @@
     </header>
 
     <div id="flex-box">
+	
         <section id="sidebar">
             
 
@@ -113,6 +114,7 @@
 
 
         </section>
+
         <section id="content">
             <section id="content-body">
 
@@ -260,8 +262,13 @@ ef9bd2df07c6        ubuntu:latest         /bin/bash           4 days ago        
 </div>
 
 
+                <div id="disqus_thread"></div>
+
             </section>
+
         </section>
+
+	
     </div>
 
     <footer>
@@ -269,5 +276,24 @@ ef9bd2df07c6        ubuntu:latest         /bin/bash           4 days ago        
     </footer>
 
 </body>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+      window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+      window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+});
+</script>
+
 
 </html>
