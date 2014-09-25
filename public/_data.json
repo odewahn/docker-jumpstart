@@ -35,7 +35,7 @@
    },
    "testimonials": [
       {
-         "name": "Lucas Carlson, CenturyLink Labs",
+         "name": "Lucas Carlson, CenturyLinkLabs",
          "link": "http://www.lucascarlson.net/",
          "testimonial": "This is a fantastic Docker guide that helps you learn all the basics to get you up and running with Docker.",
          "image": "assets/lucas_carlson.jpg"
