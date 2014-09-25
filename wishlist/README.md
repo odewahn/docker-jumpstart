@@ -7,3 +7,4 @@ This folder contains topics I'd like to do more on, but haven't yet had time.  I
 * Linking docker containers
 * PaaS services (Deis, Shipyard, etc)
 * Scaling docker containers (Mesos, Kubernetes, etc)
+* [Fleet](https://github.com/coreos/fleet)

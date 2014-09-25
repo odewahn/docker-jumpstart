@@ -35,9 +35,16 @@
    },
    "testimonials": [
       {
-         "name": "Lucas Carlson",
+         "name": "Lucas Carlson, CenturyLink Labs",
+         "link": "http://www.lucascarlson.net/",
          "testimonial": "This is a fantastic Docker guide that helps you learn all the basics to get you up and running with Docker.",
          "image": "assets/lucas_carlson.jpg"
+      },
+      {
+         "name":  "Arfon Smith, GitHub",
+         "link": "http://www.arfon.org/",
+         "testimonial": "A very nice read and exactly the sort of thing I needed about 6 months ago when trying to find my way around Docker.",
+         "image": "assets/arfon_smith.jpeg"
       }
    ]
 }
