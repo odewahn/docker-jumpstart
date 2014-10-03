@@ -28,6 +28,10 @@
          "title" : "Sharing images on Docker Hub",
          "icon": "fa-cloud-upload"
       },
+      "ipython-notebook": {
+         "title" : "Running Jupyter / IPython Notebooks on Docker for Mac/Windows",
+         "icon": "fa-bar-chart"
+      },
       "additional-resources": {
          "title" : "Additional Resources",
          "icon": "fa-book"
