@@ -124,6 +124,14 @@ $ docker kill 21761072f39f
 
 *NOTE: Unless you take steps to save your data as described above, you will lose your changes!*
 
+## Debugging manually
+
+If you're trying to manually debug 
+
+
+```
+$ ipython notebook --ip=0.0.0.0 --no-browser --profile=atlas
+```
 
 
 

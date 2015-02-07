@@ -25,16 +25,68 @@ https://github.com/boot2docker/boot2docker/pull/534
 
 ### Create a share named "Users"
 
-You can use the GUI, but you can also use this command:
+Before you can add a shared drive, stop the VM:
 
 ```
-VBoxManage sharedfolder add boot2docker-vm -name /Users2 -hostpath /Users/odewahn/Desktop
+boot2docker halt
 ```
 
+Next, set up a share shared folder named `Users` that points to a directory you'd like to make accessible.  For example, this command will map the `/Users` directory on the boot2docker guest VM to the `/Users/odewahn/Desktop` on your host:
+
+```
+VBoxManage sharedfolder add boot2docker-vm -name /Users -hostpath /Users/odewahn/Desktop
+```
+
+Note that you can also set up a share using the VirtualBox GUI. 
 
 ### Start the notebook container so that it can access the shared volume
 
-docker run -p 8888:8888 -v /Users/notebook-test:/Users/notebook-test:rw -w /Users/notebook-test odewahn/jem-tutorial ipython notebook --ip=0.0.0.0 --port=8888 --pylab=inline --no-browser
+Once you've set up the shared folder from your host the the VM, use the `-v` flag to set up a map the volume to the container.  The important thing to remember here is that the mapping in the container is relative to the share folder directory on your VM, not on the host.  
+
+Here's an example.
+
+```
+docker run -it -p 8888:8888 -v /Users/jem-docker/notebook:/Users/notebook:rw -w /Users/notebook ipython/scipystack /bin/bash
+```
+
+
+
+```
+docker run -it -p 8888:8888 -v /Users/python-data-cookbook/notebooks:/Users/notebook:rw -w /Users/notebook ipython/scipystack /bin/bash
+```
+
+
+## Volumes in 1.3
+
+* Need to update the boot2docker client and image to 1.3
+
+* Set the new environment variables in `.bash\_profile`
+
+```
+DOCKER_HOST=tcp://192.168.59.103:2376
+DOCKER\_TLS\_VERIFY=1
+DOCKER\_CERT\_PATH=/Users/odewahn/.boot2docker/certs/boot2docker-vm
+```
+
+* Set up the share and mount the volume to the container
+
+Note that you have to stop the VM before you can create a shared drive.  Mapping the path so that it's the same on both system (i.e., at the /Users level) will keep things simpler:
+
+```
+boot2docker halt
+
+VBoxManage sharedfolder add boot2docker-vm -name /Users -hostpath /Users
+
+boot2docker up
+```
+
+* 
+
+````
+docker run -it -p 8888:8888 -v $(pwd):/notebooks -w /notebooks ipython/scipystack ipython notebook --ip=0.0.0.0 --no-browser 
+
+```
+
 
 ## Links
 
