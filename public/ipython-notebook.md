@@ -57,7 +57,7 @@ Here's what the various options do:
 
 * `-p 8888:8888` exposes port 8888 on the container and maps it to port 8888 on the host
 * `-v $(pwd):/usr/data` maps your current working directory to the `/usr/data` directory on your container
-* `-w /usr/data` sets the working directory on the container to where your notebooks are running
+* `-w /usr/data` sets the working directory in the container to the mapped volume where your notebooks are located
 * `ipython/scipystack` is the name of the image to use
 * `ipython notebook --ip=0.0.0.0 --no-browser` is the command to execute
 
