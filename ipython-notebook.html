@@ -144,42 +144,28 @@
 <h3>Stopping the VM</h3>
 <p>If you&#39;re done with Docker or need to free up more memory, you can stop it like this:</p>
 <pre><code>$ boot2docker stop</code></pre>
-<h2>Add a Dockerfile</h2>
-<p>Once you&#39;ve got boot2docker installed, the next step is to set up a Dockerfile for the project.  As described in the <a href="building-images-with-dockerfiles.html">chapter on Dockerfiles</a>, a Dockerfile is a lightweight way to describe the software on the container.  Like <a href="https://registry.hub.docker.com/repos/stackbrew/">many projects</a>, Jupyter has many official images you can use as the starting point for your project.  In this example, we&#39;ll use <a href="https://registry.hub.docker.com/u/ipython/scipystack/">jupyter/scipystack</a>.</p>
-<p>Create a file called <code>Dockerfile</code> in the directory where your notebook files are stored.  It should have the following contents:</p>
-<pre><code>FROM ipython/scipystack
-
-RUN mkdir -p /notebooks
-ADD . /notebooks
-
-WORKDIR /notebooks
-EXPOSE 8888
-CMD ipython notebook --ip=0.0.0.0 --no-browser</code></pre>
-<p>Basically, what this Dockerfiles does is add the contents of your current directory (i.e., your notebook files) into a <code>/notebooks</code> directory in the scipystack container.  It then set the current working directory to <code>/notebooks</code>, exposes port 8888 (Jupyter&#39;s default port), and starts the IPyhton notebook server itself.</p>
-<h2>Build the image</h2>
-<p>Once you have the Dockerfile, you need to build it into an image:</p>
-<pre><code>$ docker build -t my-name/my-image-name .</code></pre>
-<p>It will probably churn away for a while the first time you run this because it needs to download all the layers in the scipystack image.  But, once it does, subsequent builds will go quickly.  </p>
-<p><em>Also, note you&#39;ll need to rebuild the image each time you change any of the files.</em></p>
 <h2>Start a container</h2>
-<p>Once you&#39;ve got the image built, you&#39;re almost there.  You just need to start it running:</p>
-<pre><code>$ docker run -p 8888:8888 my-name/my-image-name</code></pre>
-<h2>Open the notebook in your browser</h2>
-<p>If all goes well, you can go to the following URL in your browser and view the notebook:</p>
-<pre><code>192.168.59.103:8888</code></pre>
+<p>Once you&#39;ve got the image built, you&#39;re almost there.  Change int the directory that contains your notebooks and run this command.  <em>NB: you need Docker 1.3+ on a Mac or Linux for this to work</em> :</p>
+<pre><code>docker run -it           \
+   -p 8888:8888          \
+   -v $(pwd):/usr/data   \
+   -w /usr/data          \
+   ipython/scipystack    \
+   ipython notebook --ip=0.0.0.0 --no-browser</code></pre>
+<p>Here&#39;s what the various options do:</p>
+<ul>
+<li><code>-p 8888:8888</code> exposes port 8888 on the container and maps it to port 8888 on the host</li>
+<li><code>-v $(pwd):/usr/data</code> maps your current working directory to the <code>/usr/data</code> directory on your container</li>
+<li><code>-w /usr/data</code> sets the working directory on the container to where your notebooks are running</li>
+<li><code>ipython/scipystack</code> is the name of the image to use</li>
+<li><code>ipython notebook --ip=0.0.0.0 --no-browser</code> is the command to execute</li>
+</ul>
+<p>If all goes well, you can go to the following URL in your browser and view the notebook.</p>
+<ul>
+<li>On a Mac, go to <code>192.168.59.103:8888</code></li>
+<li>On Linux, go to <code>localhost:8888</code></li>
+</ul>
 <p>Note that boot2docker only exposes a container as a local network on that IP, so you won&#39;t be able to use a typical URL like localhost. If for some reason that IP address is unavailable, boot2docker will set another one.  You can discover this by used <code>boot2docker ip</code> and then using that in your URL.  [NEED TO CLARIFY THE NETWORKING STUFF HERE]</p>
-<h2>Saving your work</h2>
-<p>If you&#39;re on a Mac or Windows machine, be aware that your work in the notebooks is stored only on the container, not on your local filesystem.  So, if you want to keep your work, you&#39;ll need to make sure you copy out your data.  Using git is perhaps the simplest way to do this.  First, you&#39;ll need to create a git repo on a site like GitHub or BitBucket.  Next, you can use a &quot;shell magics&quot; to push your changes off the repo to your new repo.</p>
-<p>Just enter this into a cell:</p>
-<pre><code>%%bash
-
-git init
-git add .
-git commit -a -m&quot;saving all my stuff&quot;
-git remote add origin https://github.com/username/projectname
-git push origin master</code></pre>
-<p>Note that if your original files (the one you added when you built the box) are also under version control in git, you will not have the same commit history, so you&#39;ll be unable to merge changes this way.  So, this is pretty much just a simple way to get you files our, but not much else.</p>
-<p><em>Docker is working on a number of ways to improve the ability to share files between containers and the host machine.  I&#39;ll be updating this section when those new features are released.  Also, this is a pretty hokey solution.  There are probably much better ones.</em></p>
 <h2>Stopping your container</h2>
 <p>When you&#39;re ready to stop your container, you can use <code>docker ps</code> and <code>docker kill</code> to stop everything.</p>
 <pre><code>$ docker ps
