@@ -9,7 +9,7 @@ Now that we've got the basics, let's make something a tiny bit more realistic: a
 * Start a new container based on our image
 * Access our app using a browser
 
-Again, the point here is not to show the best way to set up an environment, but instead to illustrate the Docker commands and what they do.  I'll code development environments in more detail later.
+Again, the point here is not to show the best way to set up an environment, but instead to illustrate the Docker commands and what they do.  I'll cover development environments in more detail later.
 
 ## Start the "simple\_flask" container
 

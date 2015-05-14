@@ -72,7 +72,7 @@ As you can see, it's pretty straightforward: we start from "ubuntu:latest," inst
 $ docker build -t "simple_flask:dockerfile" .
 ```
 
-The "-t" flag adds a tag to the image so that it gets a nice repository name and tag. Also not the final ".", which tells Docker to use the Dockerfile in the current directory.  Once you start the build, you'll see it churn away for a while installing things, and when it completes, you'll have a brand new image.  Running `docker history` will show you the effect of each command has on the overall size of the file:
+The "-t" flag adds a tag to the image so that it gets a nice repository name and tag. Also note the final ".", which tells Docker to use the Dockerfile in the current directory.  Once you start the build, you'll see it churn away for a while installing things, and when it completes, you'll have a brand new image.  Running `docker history` will show you the effect of each command has on the overall size of the file:
 
 ```console
 $ docker history simple_flask:dockerfile
@@ -106,5 +106,5 @@ Dockerfiles provide a relatively simple way to create a base image.  And, becaus
 
 
 
-I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
+I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his [Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
 

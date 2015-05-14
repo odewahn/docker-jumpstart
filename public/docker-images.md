@@ -59,6 +59,6 @@ Each line in the history corresponds to a commit of the image's filesystem.  The
 
 There are a couple of key things to understand about the layers in a docker images:
 
-* They can be reused.  Docker keeps track of all the layers you've pulled.  So, if two images happen to have a layer in common (for example, if two images are built form the same base box), Docker will reuse the common parts, and only pull the diffs.
+* They can be reused.  Docker keeps track of all the layers you've pulled.  So, if two images happen to have a layer in common (for example, if two images are built from the same base box), Docker will reuse the common parts, and only pull the diffs.
 * The layers are always additive, which can lead to really big sizes if you're not careful.  For example, if you download a large file, make a commit, delete the file, and then make another commit, that large file will still be present in the layer history.  We'll come back to this idea again, so don't worry if it doesn't make too much sense right now.  Just remember that layers are always additive.
 
