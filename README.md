@@ -4,7 +4,7 @@ This is the source for the Docker Jumpstart, a short guide by Andrew Odewahn fro
 
 * [Introduction](public/introduction.md).  A basic intro about what Docker is and isn't.
 * [boot2docker](public/boot2docker.md).  How to get Docker running on Mac or Windows.
-* [Images: Layered filesystems](public/images.md).  A brief explanation of images and layers.
+* [Images: Layered filesystems](public/docker-images.md).  A brief explanation of images and layers.
 * [Containers: Running instances of an Image](public/containers.md).  Using `docker run` to turn a static image into a running container.
 * [Creating your own Docker Image](public/example.md).  Putting everything together to make your own images.
 * [Building images with Dockerfiles](public/building-images-with-dockerfiles.md).  Dockerfiles, a lightweight IA tool to describe an images contents.  
