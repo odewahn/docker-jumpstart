@@ -106,5 +106,5 @@ Dockerfiles provide a relatively simple way to create a base image.  And, becaus
 
 
 
-I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
+I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with [his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
 
