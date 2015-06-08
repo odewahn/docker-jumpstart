@@ -5,7 +5,7 @@ Docker is a tool for packaging and shipping apps.  Based on the idea of a shippi
 
 First, a quick overview of a few things Docker *is*:
 
-* An open source tool that places a layer on top of Linux containers (LXC) to make it simple to package and ship complex apps
+* An open source tool that places a layer on top of Linux containers (cgroups and namespaces) to make it simple to package and ship complex apps
 * A tool for creating a layered filesystem; each layer is versioned and can be shared across running instances, making for much more lightweight deployments
 * A company behind the project, as well as a site called the "Docker Hub" for sharing containers
 
