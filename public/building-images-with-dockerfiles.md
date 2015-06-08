@@ -29,7 +29,7 @@ The following table summarizes the instructions; many of these options map direc
 | EXPOSE     | Opens a port for linked containers
 | FROM       | The base image to use in the build.  This is mandatory and must be the first command in the file.
 | MAINTAINER | An optional value for the maintainer of the script
-| ONBUILD    | A command that is triggered when the image in the Dcokerfile is used as a base for another image
+| ONBUILD    | A command that is triggered when the image in the Dockerfile is used as a base for another image
 | RUN        | Executes a command and save the result as a new layer
 | USER       | Sets the default user within the container 
 | VOLUME     | Creates a shared volume that can be shared among containers or by the host machine
@@ -72,7 +72,7 @@ As you can see, it's pretty straightforward: we start from "ubuntu:latest," inst
 $ docker build -t "simple_flask:dockerfile" .
 ```
 
-The "-t" flag adds a tag to the image so that it gets a nice repository name and tag. Also not the final ".", which tells Docker to use the Dockerfile in the current directory.  Once you start the build, you'll see it churn away for a while installing things, and when it completes, you'll have a brand new image.  Running `docker history` will show you the effect of each command has on the overall size of the file:
+The "-t" flag adds a tag to the image so that it gets a nice repository name and tag. Also note the final ".", which tells Docker to use the Dockerfile in the current directory.  Once you start the build, you'll see it churn away for a while installing things, and when it completes, you'll have a brand new image.  Running `docker history` will show you the effect of each command has on the overall size of the file:
 
 ```console
 $ docker history simple_flask:dockerfile
