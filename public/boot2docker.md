@@ -117,7 +117,7 @@ The following table, taken from "boot2docker help", summarizes the various comma
 | upgrade                 | Upgrade the boot2docker ISO image (if vm is running it will be stopped and started).    
 | version                 | Display the current version of boot2docker.  It changes often, so be sure to update frequently!
 
-You can also provide a variety of options to further customize the VM, such as setting the amount of memory or the name of the box itself.  Most of these options appear to only work when the image is created (i.e., they only apply then you're doing "boos2docker init").  The following table summarizes the options from "boot2docker help".  (The actual output from the command shows the default settings for each option.)
+You can also provide a variety of options to further customize the VM, such as setting the amount of memory or the name of the box itself.  Most of these options appear to only work when the image is created (i.e., they only apply then you're doing "boot2docker init").  The following table summarizes the options from "boot2docker help".  (The actual output from the command shows the default settings for each option.)
 
 | Option       |  Description
 |--------------|----------------------------------------------------------------------|
