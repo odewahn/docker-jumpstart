@@ -11,7 +11,7 @@ a {
 }
 
 .row {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 
@@ -19,62 +19,77 @@ a {
 ----------------------------------------------------------------- */
 
 header {
-  position: relative;
   border-bottom: 1px solid #E0E0E0;
 }
 
 header #buttons {
-  position: absolute;
-  top: 3px;
-  left: 20px;
+  display: inline-block;
+  font-size: 30px;
+  padding: 30px;
 }
 
-header #buttons a {
-  color: gray;
-  font-weight: bold;
-  font-size: 15px;
-  text-decoration: none;
-}
-
-header h1 {
-  font-weight: 300;
-  font-size: 20px;
-
+#buttons i {
+  cursor: pointer;
 }
 
 header a {
-  color: gray;	
+  color: gray;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+header a:hover {
+  border-bottom: 1px solid gray;
+  text-decoration: none;
 }
 
 .fork-on-github {
-	z-index: 999999999; 
-	position: absolute; 
-	top: 0; 
-	right: 0; 
-	border: 0;
+  z-index: 999999999;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+.heading {
+  display: inline-block;
+  margin-left: 120px;
+  width: 70%;
+}
+
+.heading * div,
+.heading h1 {
+  display: inline-block;
 }
 
 .social-buttons {
-	margin-left: 120px;
-	width: 70%;
+  float: right;
+  padding: 20px;
 }
 
-
+.social-buttons .twitter {
+  padding-right: 10px;
+}
 
 
 /* Sidebar
 ----------------------------------------------------------------- */
 #sidebar {
-   display: none;
+  position: absolute;
+  left: -25rem;
+  overflow-y: auto;
+  top: 91px;
+  width: 25rem;
+  z-index: 2;
 }
 
 .toc-element {
-	padding: 10px;
+  padding: 10px;
 }
 
 .nav-buttons {
-	margin-top: 20px;
-	margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
@@ -108,17 +123,17 @@ blockquote cite {
 }
 
 .positioning-statement {
-	font-size: 1.5em; 
-	line-height: 1.5em; 
-	padding: 10px;
-	margin-bottom: 20px;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .contributing {
-   background-color: #eee;
-   border-radius: 10px; 
-   padding: 10px;
-   width: 90%;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
 }
 
 
@@ -162,7 +177,7 @@ blockquote cite {
 }
 
 #content-body img {
-	width: 100%;
+  width: 100%;
 }
 
 
@@ -175,16 +190,9 @@ footer {
 }
 
 .logo {
-	margin-left: 80px;
-	margin-right: 40px;
-	margin-bottom: 20px;
-	width: 120px;
-	float: left;
+  margin-left: 80px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+  width: 120px;
+  float: left;
 }
-
-
-
-
-
-
-
