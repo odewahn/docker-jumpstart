@@ -202,7 +202,7 @@ ef9bd2df07c6        ubuntu:latest         /bin/bash           4 days ago        
 
 As you'll see, although the container has stopped running (i.e., its status has changed from Up to Exited), the container itself is still there.  In fact, unless you use the "-rm" option when you start a container, it will always leave this remnant image behind.  And, if left unchecked, after a while you'll consume your entire disk with stopped containers.  
 
-Why is it like this, you might ask?  The answer lies in Docker's need to get a clean files state for a commit.  In a container is running, it can mean that there are open files or processes that could interfere with the ability to save the state of the filesystem.  So, rather than destroy the container automatically, Docker saves it to enable you to get a nice, clean commit image.  So, killing the image is really the same as just pausing it.  
+Why is it like this, you might ask?  The answer lies in Docker's need to get a clean files state for a commit.  If a container is running, it can mean that there are open files or processes that could interfere with the ability to save the state of the filesystem.  So, rather than destroy the container automatically, Docker saves it to enable you to get a nice, clean commit image.  So, killing the image is really the same as just pausing it.  
 
 So, to get rid of this ghost container, you need to use "docker rm":
 
