@@ -12,7 +12,7 @@ This Jumpstart guide has only scratched the surface of Docker.  This page is mea
 
 Docker has a booming ecosystem of tools.  Here are a few of the more interesting ones that I'd love to write a chapter about some day:
 
-* [fig](http://www.fig.sh/).  A tool for orchestrating and managing multi-container apps.
+* [docker-compose](https://docs.docker.com/compose/).  A tool for orchestrating and managing multi-container apps.
 * [Kitematic](https://kitematic.com/).  A slick, Mac-only alternative to boot2docker that provides a clean and simple way to install and run Docker containers.
 * [Panamax](http://panamax.io/).  A tool for drag-and-drop deployment for containers.
 

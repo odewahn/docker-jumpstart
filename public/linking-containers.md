@@ -4,6 +4,6 @@ Even the simplest apps have many parts and services: a database, a job processin
 
 Docker allows you to run each of these services in it's own container and then link them together so that they can communicate.
 
-## Fig
+## docker-compose
 
-[Fig](http://www.fig.sh/) is a tool for managing multiple container apps in Docker. It's kind of like foreman 
+[docker-compose](https://docs.docker.com/compose/) is a tool for managing multiple container apps in Docker. It's kind of like foreman 
