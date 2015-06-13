@@ -177,7 +177,7 @@ Hello World!
 If you're really excited about your "Hello World!" Flask app, you should feel free to commit it.  Otherwise, let's kill it.  First, we need to figure out its ID, which we'll do using "docker ps":
 
 ```console
-$ docker ps -a
+$ docker ps
 CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS                      PORTS                    NAMES
 2f5ada6523c4        simple_flask:latest   /bin/bash           3 days ago          Up 34 minutes               0.0.0.0:5000->5000/tcp   nostalgic_goodall                           simple_flask
 ```

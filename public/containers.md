@@ -12,7 +12,7 @@ The command consists of:
 * IMAGE.  The name of the image that the container should start from.
 * COMMAND.  The command that should run *on the container when it starts*.  
 
-Let's try a simple command to to start a new container using the latest version of Ubuntu.  Once this container starts, you'll be at a bash shell where you can do `cat /etc/os-release` to see the release information about the OS:
+Let's try a simple command to start a new container using the latest version of Ubuntu.  Once this container starts, you'll be at a bash shell where you can do `cat /etc/os-release` to see the release information about the OS:
 
 ```console
 $ docker run -it ubuntu:latest /bin/bash
