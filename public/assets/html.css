@@ -8,6 +8,10 @@ body {
 a {
     color: #2972E0;
     text-decoration: none;
+
+    transition: border 300ms ease;
+    -o-transition: border 300ms ease;
+    -webkit-transition: border 300ms ease;
 }
 
 .row {
@@ -85,6 +89,16 @@ header a:hover {
     padding: 10px;
 }
 
+.toc-element a {
+    border-bottom: 2px solid transparent;
+    color: #2F2F2F;
+    text-decoration: none;
+}
+
+.toc-element a:hover {
+    border-bottom-color: #3A7BD5;
+}
+
 .nav-buttons {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -94,10 +108,9 @@ header a:hover {
 ----------------------------------------------------------------- */
 
 .lead-button {
-    /* TODO: Alter colors */
-    border: 1px solid #3a7bd5;
+    border: 1px solid #3A7BD5;
     border-radius: 20px;
-    color: black;
+    color: #3A7BD5;
     cursor: pointer;
     margin: 10px;
     padding: 6px 12px;
@@ -109,7 +122,7 @@ header a:hover {
 }
 
 .lead-button:hover {
-    background-color: #3a7bd5;
+    background-color: #3A7BD5;
     color: white;
     text-decoration: none;
 }
@@ -153,9 +166,10 @@ blockquote cite {
 }
 
 .contributing {
-    background-color: #eee;
+    background-color: #EEEEEE;
     border-radius: 10px;
-    padding: 10px;
+    padding: 30px;
+    margin: auto auto 30px auto;
     width: 90%;
 }
 
@@ -169,7 +183,6 @@ blockquote cite {
 
 #flex-box #sidebar {
     flex: 0 0 250px;
-    border-right: 1px solid #E0E0E0;
 }
 
 #flex-box #content {
