@@ -1,131 +1,121 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+  <meta charset="UTF-8"/>
+  <title>Docker Jumpstart</title>
 
-    <meta charset="utf-8"/>
+  <!-- Styling -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='assets/html.css' rel='stylesheet' type='text/css'>
 
-    <title>Docker Jumpstart</title>
-
-   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
-   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
-   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'></link>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link href='assets/html.css' rel='stylesheet' type='text/css'></link>
-
-
-    <script type="text/javascript">
-        $(function() {
-            $("#link-toc").click(function(e) {
-                e.preventDefault();
-                $("#sidebar").toggle();
-            });
-        });
-    </script>
-
+  <!-- JavaScript -->
+  <!-- CSS is loaded before JavaScript in order to improve user experience -->
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="/assets/jquery.transit.min.js"></script>
 </head>
 
 <body>
+<header>
+  <div id="buttons">
+    <i id="link-toc" class="fa fa-bars"></i>
+  </div>
 
-    <header>
-        <div id="buttons">
-            <a href="#" id="link-toc">☰</a>
-        </div>
+  <div class="heading">
+    <h1><a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
 
+    <div class="social-buttons">
+      <div class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + '://platform.twitter.com/widgets.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, 'script', 'twitter-wjs');</script>
+      </div>
+      <div class="github">
+        <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch"
+                allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
+      </div>
+    </div>
+  </div>
 
-          <table class="social-buttons">
-	     <tr>
-		<td width="80%">
-                   <h1> <a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
-		</td>
-	        <td>
-                   <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
-                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	         </td>
-	         <td>
-	            <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
-	          </td>
-	     </tr>
-	  </table>
+  <a href="https://github.com/odewahn/docker-jumpstart">
+    <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
+  </a>
+</header>
 
-	
- 
-        <a href="https://github.com/odewahn/docker-jumpstart">
-           <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
-        </a>
+<div id="flex-box">
+  <section id="sidebar">
+    
 
-
-    </header>
-
-    <div id="flex-box">
-	
-        <section id="sidebar">
-            
-
-
-   <div class="toc-element clearfix">
-      <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
-   </div>
-
-
-
-   <div class="toc-element clearfix">
-      <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+</div>
 
 
 
-   <div class="toc-element clearfix">
-      <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
-   </div>
+<div class="toc-element clearfix">
+  <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
+</div>
 
 
 
-        </section>
+<div class="toc-element clearfix">
+  <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+</div>
 
-        <section id="content">
-            <section id="content-body">
 
-                <h1>Sharing images on Docker Hub</h1>
-<p>The <a href="https://hub.docker.com">Docker Hub</a> is a site where you store and share images you create.  Consciously modeled on <a href="https://github.com/">GitHub</a>, the site offers features like:</p>
+  </section>
+
+  <section id="content">
+    <section id="content-body">
+
+      <h1>Sharing images on Docker Hub</h1><p>The <a href="https://hub.docker.com">Docker Hub</a> is a site where you store and share images you create.  Consciously modeled on <a href="https://github.com/">GitHub</a>, the site offers features like:</p>
 <ul>
 <li>Docker image hosting.  Like GitHub, public images are free and private images are paid</li>
 <li>Collaborators who can push and pull the images</li>
@@ -138,12 +128,10 @@
 <li>The docker command line tool, where you can pull, push, or search for images.  This is similar to git.</li>
 </ul>
 <p>There are a number of features specific Docker.  One of the most interesting, <a href="http://blog.docker.com/2013/11/introducing-trusted-builds/">trusted builds</a>, allow you to create signed images based on a Dockerfile in GitHub or BitBucket.  As with a CI/CD tool, the trusted build is triggered by a post commit hook on your repo so that your image will also be up to date with your codebase. In addition, the image is flagged with a &quot;trusted build&quot; badge so that you can verity its source.</p>
-<h2>Create an account</h2>
-<p>The first to using Docker hub is to sign up, which you can do on their <a href="https://hub.docker.com/account/signup/">Signup page</a>.  You&#39;ll be asked for an email address, username, and a password.  Once you login, you&#39;ll see a project dashboard that&#39;s similar to other hosting sites:</p>
-<p><img src="images/docker-hub.png"/></p>
+<h2>Create an account</h2><p>The first to using Docker hub is to sign up, which you can do on their <a href="https://hub.docker.com/account/signup/">Signup page</a>.  You&#39;ll be asked for an email address, username, and a password.  Once you login, you&#39;ll see a project dashboard that&#39;s similar to other hosting sites:</p>
+<p><img src="images/docker-hub.png"></p>
 <p>Once you&#39;ve set up your account, you use the <code>docker login</code> command from your terminal so that you can pull and push images from your account.  (Note that you can also register with this command, as well, if you want to not use the site.)  Once you login, your docker will store your credentials in a file called <code>.dockercfg</code> in your home directory.</p>
-<h2>Searching for images</h2>
-<p>One of the most basic things you can do with the Hub is search for other images using <code>docker search</code>.  Here, for example, are the first few results returned by the <code>docker search ubuntu</code> command.  As of this writing, we get over 1300 matches, so be prepared to wait a bit for the results.)</p>
+<h2>Searching for images</h2><p>One of the most basic things you can do with the Hub is search for other images using <code>docker search</code>.  Here, for example, are the first few results returned by the <code>docker search ubuntu</code> command.  As of this writing, we get over 1300 matches, so be prepared to wait a bit for the results.)</p>
 <pre><code class="language-console">$ docker search ubuntu
 NAME                                             DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 ubuntu                                           Official Ubuntu base image                      525       [OK]       
@@ -158,7 +146,8 @@ mbentley/ubuntu-django-uwsgi-nginx                                              
 cmfatih/phantomjs                                PhantomJS [ phantomjs 1.9.7, casperjs 1.1....   5                    [OK]
 zmarcantel/cassandra                             Cluster/Standalone DataStax Cassandra on U...   4                    [OK]
 suttang/gollum                                   The gollum wiki installed on ubuntu             4                    [OK]
-...</code></pre>
+...
+</code></pre>
 <p>The command returns the following columns:</p>
 <ul>
 <li>Name.  This is the name and namespace of the image.  (More on namespaces in a bit.)</li>
@@ -172,8 +161,7 @@ suttang/gollum                                   The gollum wiki installed on ub
 <li>Root.  This is the namespace is reserved for &quot;root&quot; images maintained directly by Docker, Inc.  Basically, it&#39;s an &quot;empty&quot; space, and the names are things like &quot;ubuntu&quot; or &quot;debian.&quot;</li>
 <li>User.  This namespace is for users within the Docker Hub, such as &quot;crashsystems/gitlab-docker,&quot; &quot;mbentley/ubuntu-django-uwsgi-nginx,&quot; or &quot;suttang/gollum&quot;</li>
 </ul>
-<h2>Pulling an image</h2>
-<p>Pulling any of these images is simple: just use <code>docker pull</code> and whatever the name is.  For example, here&#39;s how you pull all layers of the &quot;stackbrew/ubuntu&quot; image:</p>
+<h2>Pulling an image</h2><p>Pulling any of these images is simple: just use <code>docker pull</code> and whatever the name is.  For example, here&#39;s how you pull all layers of the &quot;stackbrew/ubuntu&quot; image:</p>
 <pre><code>$ $ docker pull stackbrew/ubuntu
 Pulling repository stackbrew/ubuntu
 822a01ae9a15: Pulling dependent layers 
@@ -186,15 +174,14 @@ af82eb377801: Downloading [===========&gt;                                      
 3af9d794ad07: Downloading [========================&gt;                          ] 19.07 MB/39.53 MB 55h25m0s
 93c381d2c255: Downloading [================&gt;                                  ] 12.58 MB/39.17 MB 109h9m35s
 1c9383292a8f: Download complete 
-...</code></pre>
-<p>As discussed in the chapter on images, you can also pull only the layers of the latest build by adding &quot;:latest&quot; to the name.  (Otherwise you&#39;ll pull the full history.)</p>
-<h2>Pushing an Image</h2>
-<p>Let&#39;s try to push an image to the hub.  Unlike the previous <code>search</code> and <code>pull</code> commands, you must be logged in to push.  If you&#39;re not already logged in, Docker will prompt you for your credentials</p>
+...
+</code></pre><p>As discussed in the chapter on images, you can also pull only the layers of the latest build by adding &quot;:latest&quot; to the name.  (Otherwise you&#39;ll pull the full history.)</p>
+<h2>Pushing an Image</h2><p>Let&#39;s try to push an image to the hub.  Unlike the previous <code>search</code> and <code>pull</code> commands, you must be logged in to push.  If you&#39;re not already logged in, Docker will prompt you for your credentials</p>
 <pre><code>$ docker push simple_flask:latest
-2014/09/03 12:42:10 You cannot push a &quot;root&quot; repository. Please rename your repository in &lt;user&gt;/&lt;repo&gt; (ex: odewahn/simple_flask:latest)</code></pre>
-<p>This rather self-explanatory error occurs because we didn&#39;t specify a username when we created the image.  To push to the Docker Hub, though, you must specify a username.  (Unless you&#39;re luck enough to be making Docker&#39;s official images, in which case you probably don&#39;t need this book!).  So, let&#39;s add our username using the <code>docker tag</code> command:</p>
-<pre><code>$ docker tag simple_flask odewahn/simple_flask</code></pre>
-<p>Once you&#39;ve retagged the image, you can push it to the Hub:</p>
+2014/09/03 12:42:10 You cannot push a &quot;root&quot; repository. Please rename your repository in &lt;user&gt;/&lt;repo&gt; (ex: odewahn/simple_flask:latest)
+</code></pre><p>This rather self-explanatory error occurs because we didn&#39;t specify a username when we created the image.  To push to the Docker Hub, though, you must specify a username.  (Unless you&#39;re luck enough to be making Docker&#39;s official images, in which case you probably don&#39;t need this book!).  So, let&#39;s add our username using the <code>docker tag</code> command:</p>
+<pre><code>$ docker tag simple_flask odewahn/simple_flask
+</code></pre><p>Once you&#39;ve retagged the image, you can push it to the Hub:</p>
 <pre><code class="language-console">$ docker push odewahn/simple_flask:latest
 The push refers to a repository [odewahn/simple_flask] (len: 1)
 Sending image list
@@ -215,10 +202,10 @@ d92c3c92fa73: Image already pushed, skipping
 cc58e55aa5a5: Image already pushed, skipping 
 c4ff7513909d: Image already pushed, skipping 
 c21c062b086a: Image successfully pushed 
-Pushing tag for rev [c21c062b086a] on {https://cdn-registry-1.docker.io/v1/repositories/odewahn/simple_flask/tags/latest}</code></pre>
+Pushing tag for rev [c21c062b086a] on {https://cdn-registry-1.docker.io/v1/repositories/odewahn/simple_flask/tags/latest}
+</code></pre>
 
-
-                
+      
 
 <div class="nav-buttons">
 <ul class="nav nav-pills">
@@ -240,38 +227,48 @@ Pushing tag for rev [c21c062b086a] on {https://cdn-registry-1.docker.io/v1/repos
 </div>
 
 
-                <div id="disqus_thread"></div>
+      <div id="disqus_thread"></div>
 
-            </section>
+    </section>
+  </section>
+</div>
 
-        </section>
-
-	
-    </div>
-
-    <footer>
-        <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg" />
-    </footer>
-
-</body>
+<footer>
+  <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg"/>
+</footer>
 
 <script type="text/javascript">
-
-jQuery(document).ready(function(){
-      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-      window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
-      window.disqus_title = $('title').text() + " / " + $('h1').first().text();
-      window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
-
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-});
+  var toggled;
+  $("#link-toc").click(function (event) {
+    event.preventDefault();
+    var sidebar = $("#sidebar");
+    if (!toggled) {
+      sidebar.transition({x: '25rem'});
+      toggled = true;
+    } else {
+      sidebar.transition({x: '-25rem'});
+      toggled = false;
+    }
+  });
 </script>
 
+<script type="text/javascript">
+  $(document).ready(function () {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+    window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+    window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
 
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  });
+</script>
+</body>
 </html>
