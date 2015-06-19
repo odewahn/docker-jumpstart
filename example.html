@@ -1,0 +1,305 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>Docker Jumpstart</title>
+
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'></link>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href='assets/html.css' rel='stylesheet' type='text/css'></link>
+
+
+    <script type="text/javascript">
+        $(function() {
+            $("#link-toc").click(function(e) {
+                e.preventDefault();
+                $("#sidebar").toggle();
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <div id="buttons">
+            <a href="#" id="link-toc">☰</a>
+        </div>
+
+
+          <table class="social-buttons">
+	     <tr>
+		<td width="80%">
+                   <h1> <a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
+		</td>
+	        <td>
+                   <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
+                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	         </td>
+	         <td>
+	            <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
+	          </td>
+	     </tr>
+	  </table>
+
+	
+ 
+        <a href="https://github.com/odewahn/docker-jumpstart">
+           <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
+        </a>
+
+
+    </header>
+
+    <div id="flex-box">
+	
+        <section id="sidebar">
+            
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+   </div>
+
+
+
+        </section>
+
+        <section id="content">
+            <section id="content-body">
+
+                <h1>Creating your own Docker Image</h1>
+<p>Now that we&#39;ve got the basics, let&#39;s make something a tiny bit more realistic: a <a href="http://flask.pocoo.org/">Flask</a> app.  In this section we&#39;ll:</p>
+<ul>
+<li>Start a basic container named &quot;simple_flask&quot; based on Ubuntu</li>
+<li>Install the dependencies</li>
+<li>Install the app itself (which is just the &quot;Hello, World!&quot; example, so it&#39;s nothing exciting)</li>
+<li>Commit the container to a new image for our app</li>
+<li>Start a new container based on our image</li>
+<li>Access our app using a browser</li>
+</ul>
+<p>Again, the point here is not to show the best way to set up an environment, but instead to illustrate the Docker commands and what they do.  I&#39;ll code development environments in more detail later.</p>
+<h2>Start the &quot;simple_flask&quot; container</h2>
+<p>Our first step is to start a new container based on &quot;ubuntu:latest.&quot;  As we did in the previous example, we&#39;ll make it interactive using the &quot;-it&quot; options, but this time we&#39;ll give it our own name:</p>
+<pre><code class="language-console">$ docker run -it --name=&quot;simple_flask&quot; ubuntu:latest /bin/bash</code></pre>
+<p>The nice thing about using a name is that you can use it in other docker commands in place of the container id.  For example, you can use this command to see the top process running on the container. (Also, it&#39;s worth noting that you need to run this on a terminal on your host, not in the container itself.)  </p>
+<pre><code class="language-console">$ docker top simple_flask
+PID                 USER                COMMAND
+969                 root                /bin/bash</code></pre>
+<h2>Install the dependencies</h2>
+<p>Now that we&#39;ve got the container running, we install the dependencies we need.  First, since Flask is a Python micro framework, let&#39;s check out what version of Python we have:</p>
+<pre><code class="language-console">root@2f5ada6523c4:/home# python --version
+bash: python: command not found</code></pre>
+<p>&quot;Wait a minute!&quot; you might be asking yourself, &quot;What gives? Shouldn&#39;t Python be installed on Ubuntu?&quot;  And, the answer is &quot;Yes,&quot; on a &quot;real&quot; Ubuntu distribution it is.  But, to save on size, the Docker base images are stripped down versions of the official images.  This is important to keep this in mind as you build new containers: don&#39;t take it for granted that everything on the official distribution will be present on the Docker base image.</p>
+<p>So, let&#39;s get a minimal python environment going.  First, we&#39;ll update our apt repository:</p>
+<pre><code class="language-console">root@2f5ada6523c4:/home# apt-get update</code></pre>
+<p>This will churn away for a while updating various packages.  Once it&#39;s complete, install python and pip:</p>
+<pre><code class="language-console">root@2f5ada6523c4:/home# apt-get install -y python python-pip wget</code></pre>
+<p>This churns even longer, but once it&#39;s done, you can install Flask:</p>
+<pre><code class="language-console">root@2f5ada6523c4:/home# pip install Flask</code></pre>
+<p>Whew.  That&#39;s a lot of stuff to install, so let&#39;s commit the image with a simple commit message:</p>
+<pre><code class="language-console">$ docker commit -m &quot;installed python and flask&quot; simple_flask
+c21c062b...</code></pre>
+<p>So, now if you check your &quot;docker images&quot; you&#39;ll see the new repository:</p>
+<pre><code class="language-console">admins-air-5:~ odewahn$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+&lt;none&gt;              &lt;none&gt;              c21c062b086a        2 days ago          385.7 MB
+ubuntu              latest              c4ff7513909d        7 days ago          225.4 MB</code></pre>
+<p>But, ugh, it doesn&#39;t have a name -- it just shows up as &quot;&lt;none&gt;&quot;.  We can use <em>docker tag</em> to give our image a nice name, like this:</p>
+<pre><code class="language-console">$ docker tag c21c062b086a simple_flask
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+simple_flask        latest              c21c062b086a        2 days ago          385.7 MB
+ubuntu              latest              c4ff7513909d        7 days ago          225.4 MB</code></pre>
+<p>Finally, taking a quick look at the history shows that we&#39;ve loaded about 160MB worth of new stuff onto our image:</p>
+<pre><code class="language-console">$ docker history simple_flask
+IMAGE               CREATED             CREATED BY                                      SIZE
+c21c062b086a        2 days ago          /bin/bash                                       160.3 MB
+c4ff7513909d        7 days ago          /bin/sh -c #(nop) CMD [/bin/bash]               0 B
+cc58e55aa5a5        7 days ago          /bin/sh -c apt-get update &amp;&amp; apt-get dist-upg   32.67 MB
+0ea0d582fd90        7 days ago          /bin/sh -c sed -i &#39;s/^#\s*\(deb.*universe\)$/   1.895 kB
+d92c3c92fa73        7 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
+9942dd43ff21        7 days ago          /bin/sh -c echo &#39;#!/bin/sh&#39; &gt; /usr/sbin/polic   194.5 kB
+1c9383292a8f        7 days ago          /bin/sh -c #(nop) ADD file:c1472c26527df28498   192.5 MB
+511136ea3c5a        14 months ago                                                       0 B</code></pre>
+<h2>Install our code</h2>
+<p>Let&#39;s get our code installed.  First, fire up a new container:</p>
+<pre><code class="language-console">$ docker run -it -p 5000:5000 simple_flask /bin/bash</code></pre>
+<p>As before, we&#39;ll use the &quot;-it&quot; options to make it interactive, but we&#39;re now adding a couple of new settings:</p>
+<ul>
+<li>The &quot;-p 5000:5000&quot; option exposes port 5000 on the container and routes it to port 5000 on the host.  If you&#39;re running Docker on a Mac, the confusing thing to remember is that from the Docker container&#39;s perspective, the virtual machine is the host, so you&#39;ll also need to expose port 5000 from the VM in order to see it on your &quot;real&quot; host OS.  We&#39;ll cover this <a href="http://en.wikipedia.org/wiki/Inception">Inception</a>-like step in the next section.</li>
+<li>The &quot;-w /home&quot; option sets the working directory used when the container starts.  Note that this must be an absolute path.</li>
+</ul>
+<p>Once we&#39;re in, we&#39;ll grab our simple hello world file from this projects github repo:</p>
+<pre><code class="language-console"># wget https://raw.githubusercontent.com/odewahn/docker-jumpstart/master/examples/hello.py
+--2014-08-17 05:38:02--  https://raw.githubusercontent.com/odewahn/docker-jumpstart/master/examples/hello.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 199.27.78.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|199.27.78.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 149 [text/plain]
+Saving to: &#39;hello.py&#39;
+
+100%[===========================================================================&gt;] 149         --.-K/s   in 0s      
+
+2014-08-17 05:38:02 (1.34 MB/s) - &#39;hello.py&#39; saved [149/149]
+
+root@2f5ada6523c4:/home# cat hello.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route(&#39;/&#39;)
+def hello_world():
+    return &#39;Hello World!&#39;
+
+if __name__ == &#39;__main__&#39;:
+    app.run(host=&#39;0.0.0.0&#39;)</code></pre>
+<p>Finally, once you&#39;ve got the file, start the app.  You should see something like this:</p>
+<pre><code class="language-console">root@2f5ada6523c4:/home# python hello.py 
+ * Running on http://127.0.0.1:5000/</code></pre>
+<h2>View the flask app on your host machine</h2>
+<p>We&#39;re ready for the big reveal.  On a terminal on your host, try this command:</p>
+<pre><code class="language-console">$ curl localhost:5000</code></pre>
+<p>If you&#39;re running this on Linux as your host OS, you should see &quot;Hello World!&quot; printed.  If you&#39;re running it on boot2docker on a Mac or Windows, you most likely got this error:</p>
+<pre><code class="language-console">curl: (7) Failed connect to localhost:5000; Connection refused</code></pre>
+<p>As I mentioned earlier, when you started the container and told it to expose port 5000, it exposed it <em>on the virtual machine</em>, not on your host.  As described in the chapter on boot2docker, you need to use VBoxManage to open the port from the VM onto your host, like this:</p>
+<pre><code class="language-console">$ VBoxManage controlvm boot2docker-vm natpf1 &quot;flask-server,tcp,127.0.0.1,5000,,5000&quot;</code></pre>
+<p>You should now be able to connect to the simple app, like this:</p>
+<pre><code class="language-console">$ curl localhost:5000
+Hello World!</code></pre>
+<h2>Cleaning up</h2>
+<p>If you&#39;re really excited about your &quot;Hello World!&quot; Flask app, you should feel free to commit it.  Otherwise, let&#39;s kill it.  First, we need to figure out its ID, which we&#39;ll do using &quot;docker ps&quot;:</p>
+<pre><code class="language-console">$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS                      PORTS                    NAMES
+2f5ada6523c4        simple_flask:latest   /bin/bash           3 days ago          Up 34 minutes               0.0.0.0:5000-&gt;5000/tcp   nostalgic_goodall                           simple_flask</code></pre>
+<p>We can kill our simple_flask app running as container &quot;2f5ada6523c4&quot; like this:</p>
+<pre><code class="language-console">$ docker kill 2f5ada6523c4
+2f5ada6523c4</code></pre>
+<p>To verify it&#39;s gone, lets run &quot;docker ps&quot; again, but this time add the &quot;-a&quot; option so that we see all containers: </p>
+<pre><code class="language-console">$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS                      PORTS               NAMES
+2f5ada6523c4        simple_flask:latest   /bin/bash           3 days ago          Exited (-1) 2 seconds ago                       nostalgic_goodall   
+55ba5b67cb28        simple_flask:latest   /bin/bash           3 days ago          Exited (0) 40 minutes ago                       dreamy_mayer        
+6029929a1e53        ubuntu:latest         /bin/bash           3 days ago          Exited (0) 13 hours ago                         naughty_leakey      
+ef9bd2df07c6        ubuntu:latest         /bin/bash           4 days ago          Exited (0) 13 hours ago                         simple_flask</code></pre>
+<p>As you&#39;ll see, although the container has stopped running (i.e., its status has changed from Up to Exited), the container itself is still there.  In fact, unless you use the &quot;-rm&quot; option when you start a container, it will always leave this remnant image behind.  And, if left unchecked, after a while you&#39;ll consume your entire disk with stopped containers.  </p>
+<p>Why is it like this, you might ask?  The answer lies in Docker&#39;s need to get a clean files state for a commit.  In a container is running, it can mean that there are open files or processes that could interfere with the ability to save the state of the filesystem.  So, rather than destroy the container automatically, Docker saves it to enable you to get a nice, clean commit image.  So, killing the image is really the same as just pausing it.  </p>
+<p>So, to get rid of this ghost container, you need to use &quot;docker rm&quot;:</p>
+<pre><code class="language-console">$ docker rm 2f5ada6523c4
+2f5ada6523c4</code></pre>
+<p>But, what about all those other stopped containers hanging around?  Never fear! This great tip from <a href="http://jimhoskins.com/">Jim Hoskins</a> in <a href="http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html">Remove Untagged Images From Docker</a> shows a quick way to remove stopped containers in bulk:</p>
+<pre><code class="language-console">$ docker rm $(docker ps -aq)</code></pre>
+
+
+                
+
+<div class="nav-buttons">
+<ul class="nav nav-pills">
+   
+      <li>
+         <a href="containers.html" title="Containers: Running instances of an Image"> 
+            <span class="glyphicon glyphicon-chevron-left"/> Previous
+         </a>
+      </li>
+   
+   
+      <li>
+         <a href="building-images-with-dockerfiles.html" title="Building images with Dockerfiles"> 
+            Next <span class="glyphicon glyphicon-chevron-right"/>
+         </a>
+      </li>
+   
+</ul>
+</div>
+
+
+                <div id="disqus_thread"></div>
+
+            </section>
+
+        </section>
+
+	
+    </div>
+
+    <footer>
+        <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg" />
+    </footer>
+
+</body>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+      window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+      window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+});
+</script>
+
+
+</html>

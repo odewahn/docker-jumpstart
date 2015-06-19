@@ -1,0 +1,435 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>Docker Jumpstart</title>
+
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'></link>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href='assets/html.css' rel='stylesheet' type='text/css'></link>
+
+
+    <script type="text/javascript">
+        $(function() {
+            $("#link-toc").click(function(e) {
+                e.preventDefault();
+                $("#sidebar").toggle();
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <div id="buttons">
+            <a href="#" id="link-toc">☰</a>
+        </div>
+
+
+          <table class="social-buttons">
+	     <tr>
+		<td width="80%">
+                   <h1> <a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
+		</td>
+	        <td>
+                   <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
+                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	         </td>
+	         <td>
+	            <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
+	          </td>
+	     </tr>
+	  </table>
+
+	
+ 
+        <a href="https://github.com/odewahn/docker-jumpstart">
+           <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
+        </a>
+
+
+    </header>
+
+    <div id="flex-box">
+	
+        <section id="sidebar">
+            
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
+   </div>
+
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+   </div>
+
+
+
+        </section>
+
+        <section id="content">
+            <section id="content-body">
+
+                <h1>Using boot2docker to run Docker on a Mac or Windows</h1>
+<p>Docker&#39;s underlying containerization technology only works on Linux.  To use it on a Mac or Windows, you must use a command-line tool called <a href="http://boot2docker.io/">boot2docker</a> that installs a Linux virtual machine (or &quot;VM&quot;) on your system.  If you&#39;re unfamiliar with VMs, they let you run a &quot;guest&quot; operating system (like Linux) on your &quot;host&quot; operating system (like a Mac or Windows).  For all intents and purposes, the VM is another computer running &quot;inside&quot; your computer -- it has its own operating system, filesystem, and network that can piggyback on the resources of the host OS in an isolated environment.  </p>
+<p>So, the idea behind boot2docker is really quite clever: since we can&#39;t run Docker natively on Windows or a Mac, we install a bare-bones Linux VM that <em>can</em> run Docker, and then we communicate with it using a Docker client running on our host (i.e., the terminal on our main OS).  If you&#39;ve ever used a package like Postgres or MySql, it&#39;s exactly the same idea: you have a client tool that you use to issue commands to another server.  The main difference is that our &quot;docker&quot; process is running inside a VM, rather than as a native service.  </p>
+<p>This chapter will walk you through the installation process.  Since both Docker and boot2docker are changing so rapidly, rather than describe the detailed steps here, I&#39;ve provided an overview of the process so that you&#39;ll understand what&#39;s happening. </p>
+<h2>Install boot2docker</h2>
+<p>Before you start, it&#39;s a good idea to first set up SSH on your host machine so that boot2docker can install your login credentials on the VM.  Otherwise, you&#39;ll be prompted for a password whenever you log in.  If you&#39;re unfamiliar with SSH or SSH keys, Appendix ??? will give you details of how to get set up.</p>
+<p>First, download the installation package for your system.  You can find <a href="http://docs.docker.com/installation/mac/">Mac</a> and <a href="http://docs.docker.com/installation/windows/">Windows</a> installation instructions on the Docker&#39;s <a href="http://docs.docker.com/">documentation site</a>.  Next, you run the install procedure, which will install the boot2docker command line tool as well  <a href="https://www.virtualbox.org/">VirtualBox</a>, a free tool from Oracle that allows your computer to run virtual machines.</p>
+<p>Once the basic tools are installed, you&#39;re ready to create the box by running <em>boot2docker init</em>.  (Think of this as purchasing a new computer.)  This will create a new Linux &quot;box&quot; called &quot;boot2docker-vm&quot; on your machine that has Docker installed, as well as configure some of the basic things you&#39;ll need to communicate with it from your host.  The command will produce something like this:</p>
+<pre><code class="language-console">$ boot2docker init
+2014/08/11 13:30:58 Creating VM boot2docker-vm...
+2014/08/11 13:30:58 Apply interim patch to VM boot2docker-vm (https://www.virtualbox.org/ticket/12748)
+2014/08/11 13:30:58 Setting NIC #1 to use NAT network...
+2014/08/11 13:30:58 Port forwarding [ssh] tcp://127.0.0.1:2022 --&gt; :22
+2014/08/11 13:30:58 Port forwarding [docker] tcp://127.0.0.1:2375 --&gt; :2375
+2014/08/11 13:30:58 Setting NIC #2 to use host-only network &quot;vboxnet4&quot;...
+2014/08/11 13:30:59 Setting VM storage...
+2014/08/11 13:31:07 Done. Type `boot2docker up` to start the VM.</code></pre>
+<p>Once the box is created (it can take a few minutes because it has to download the image), you run <em>boot2docker up</em>  to boot up the box. Think of this as turning your the new computer on. The box will start the Docker daemon in the VM that listens for requests from the our client on our host.  Here&#39;s an example:</p>
+<pre><code class="language-console">$ boot2docker up
+2014/08/11 13:38:00 Waiting for VM to be started...
+............
+2014/08/11 13:38:36 Started.
+2014/08/11 13:38:36 To connect the Docker client to the Docker daemon, please set:
+2014/08/11 13:38:36     export DOCKER_HOST=tcp://192.168.59.104:2375</code></pre>
+<p>Finally, you&#39;ll need to set an environment variable called DOCKER_HOST that will tell your Docker client on your host machine the URI for the Docker daemon running on the VM.  This address is the last line returned from the &quot;boot2docker up&quot; command.   For example, here&#39;s what we&#39;d run based on the output we got in the previous step:</p>
+<pre><code class="language-console">$ export DOCKER_HOST=tcp://192.168.59.104:2375</code></pre>
+<p>Since running the export command in the shell will only set the environment variable temporarily, you should follow the process on your OS to make it permanent.  On a Mac, <a href="http://stackoverflow.com/questions/22502759/mac-os-x-10-9-setting-permanent-environment-variables">add the following line to the ~/.bash_profile</a>:</p>
+<pre><code class="language-console">export DOCKER_HOST=tcp://$(boot2docker ip 2&gt;/dev/null):2375</code></pre>
+<p>On windows, <a href="http://stackoverflow.com/questions/17312348/how-do-i-set-windows-environment-variables-permanently">use the &quot;environment variables&quot; setting of the &quot;Advanced system settings&quot; tab</a> </p>
+<p>Once you&#39;ve completed all these steps, you should have the Docker client installed and a VM capable of starting Docker containers.  To test it out, try the command &quot;docker run hello-world&quot; from your host:</p>
+<pre><code class="language-console">$ docker run hello-world
+Unable to find image &#39;hello-world&#39; locally
+Pulling repository hello-world
+565a9d68a73f: Pulling image (latest) from hello-world, endpoint: https://cdn-reg565a9d68a73f: Download complete 
+511136ea3c5a: Download complete 
+2505d942a91d: Download complete 
+Hello from Docker.
+...</code></pre>
+<p>As you can see from the output, this command has pulled down the <a href="https://registry.hub.docker.com/_/hello-world/">hello-world</a> repository from  (more on this in a later chapter) and printed the text &quot;Hello from Docker.&quot; If you&#39;re seeing this message, then you&#39;ve successfully installed boot2docker.  Alternatively, if you get a message like the following, you should doublecheck that you&#39;ve set the DOCKER_HOST environment variable correctly:</p>
+<pre><code>$ docker run hello-world
+2014/08/11 15:05:55 Post http:///var/run/docker.sock/v1.13/containers/create: dial unix /var/run/docker.sock: no such file or directory</code></pre>
+<h3>Upgrading from an older install</h3>
+<p>If you&#39;ve installed an older version of boot2docker, you can (and should!) use boot2docker itself to update the package.  The commands are:</p>
+<pre><code class="language-console">$ boot2docker stop
+$ boot2docker download
+$ boot2docker start</code></pre>
+<h2>boot2docker Quick Reference</h2>
+<p>boot2docker uses the increasingly common &quot;git&quot;-style format:</p>
+<pre><code class="language-console">$ boot2docker [&lt;options&gt;] &lt;command&gt; [&lt;args&gt;]</code></pre>
+<p>For example, here&#39;s how to get the VM&#39;s current status:</p>
+<pre><code class="language-console">$ boot2docker status
+running</code></pre>
+<p>The following table, taken from &quot;boot2docker help&quot;, summarizes the various commands.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>init</td>
+<td>Create a new boot2docker VM.  You should only do this once to create a box.</td>
+</tr>
+<tr>
+<td>up</td>
+<td>Starts the VM and the Docker daemon</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Get the current state of VM, such as &quot;running,&quot; &quot;saved,&quot; or &quot;poweroff&quot;.</td>
+</tr>
+<tr>
+<td>ssh [ssh-command]</td>
+<td>Start a shell on the VM using SSH.  If you have not set up an SSH key, you&#39;ll be prompted for a password.  (It&#39;s &quot;tcuser&quot;)</td>
+</tr>
+<tr>
+<td>save / suspend</td>
+<td>Suspend the VM and save state to disk.</td>
+</tr>
+<tr>
+<td>down / stop / halt</td>
+<td>Gracefully shutdown the VM.</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>Gracefully reboot the VM.</td>
+</tr>
+<tr>
+<td>delete / destroy</td>
+<td>Delete the boot2docker VM and its disk image.</td>
+</tr>
+<tr>
+<td>config / cfg</td>
+<td>Displays selected settings for the VM, such as its memory size or IP address </td>
+</tr>
+<tr>
+<td>help</td>
+<td>Displays the commands in this table</td>
+</tr>
+<tr>
+<td>info</td>
+<td>A json dump of profile settings</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>The IP address of the VM&#39;s Host-only network; this can be used to set the DOCKER_HOST environment variable</td>
+</tr>
+<tr>
+<td>download</td>
+<td>Download&#39;s the current boot2docker ISO image.  (An ISO is an archive format based on old CDROM standard.)</td>
+</tr>
+<tr>
+<td>upgrade</td>
+<td>Upgrade the boot2docker ISO image (if vm is running it will be stopped and started).    </td>
+</tr>
+<tr>
+<td>version</td>
+<td>Display the current version of boot2docker.  It changes often, so be sure to update frequently!</td>
+</tr>
+</tbody>
+</table>
+<p>You can also provide a variety of options to further customize the VM, such as setting the amount of memory or the name of the box itself.  Most of these options appear to only work when the image is created (i.e., they only apply then you&#39;re doing &quot;boos2docker init&quot;).  The following table summarizes the options from &quot;boot2docker help&quot;.  (The actual output from the command shows the default settings for each option.)</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--basevmdk</td>
+<td>Path to VMDK to use as base for persistent partition</td>
+</tr>
+<tr>
+<td>--dhcp</td>
+<td>enable VirtualBox host-only network DHCP.</td>
+</tr>
+<tr>
+<td>--dhcpip</td>
+<td>VirtualBox host-only network DHCP server address.</td>
+</tr>
+<tr>
+<td>--disksize</td>
+<td>boot2docker disk image size (in MB).</td>
+</tr>
+<tr>
+<td>--dockerport</td>
+<td>host Docker port (forward to port 2375 in VM).</td>
+</tr>
+<tr>
+<td>--hostip</td>
+<td>VirtualBox host-only network IP address.</td>
+</tr>
+<tr>
+<td>--iso</td>
+<td>path to boot2docker ISO image.</td>
+</tr>
+<tr>
+<td>--lowerip</td>
+<td>VirtualBox host-only network DHCP lower bound.</td>
+</tr>
+<tr>
+<td>--memory</td>
+<td>virtual machine memory size (in MB).</td>
+</tr>
+<tr>
+<td>--netmask</td>
+<td>VirtualBox host-only network mask.</td>
+</tr>
+<tr>
+<td>--serial</td>
+<td>try serial console to get IP address (experimental)</td>
+</tr>
+<tr>
+<td>--serialfile</td>
+<td>path to the serial socket/pipe.</td>
+</tr>
+<tr>
+<td>--ssh</td>
+<td>path to SSH client utility.</td>
+</tr>
+<tr>
+<td>--ssh-keygen</td>
+<td>path to ssh-keygen utility.</td>
+</tr>
+<tr>
+<td>--sshkey</td>
+<td>path to SSH key to use.</td>
+</tr>
+<tr>
+<td>--sshport</td>
+<td>host SSH port (forward to port 22 in VM).</td>
+</tr>
+<tr>
+<td>--upperip</td>
+<td>VirtualBox host-only network DHCP upper bound.</td>
+</tr>
+<tr>
+<td>--vbm</td>
+<td>path to VirtualBox management utility.</td>
+</tr>
+<tr>
+<td>--verbose</td>
+<td>display verbose command invocations.</td>
+</tr>
+<tr>
+<td>--vm</td>
+<td>virtual machine name.</td>
+</tr>
+</tbody>
+</table>
+<p>Here&#39;s an example of how you&#39;d created an image that used 4GB, rather than the default 2GB.</p>
+<pre><code class="language-console">$ boot2docker --memory=4096 init
+2014/08/11 17:15:50 Creating VM boot2docker-vm...
+2014/08/11 17:15:50 Apply interim patch to VM boot2docker-vm (https://www.virtualbox.org/ticket/12748)
+2014/08/11 17:15:50 Setting NIC #1 to use NAT network...
+2014/08/11 17:15:51 Port forwarding [ssh] tcp://127.0.0.1:2022 --&gt; :22
+2014/08/11 17:15:51 Port forwarding [docker] tcp://127.0.0.1:2375 --&gt; :2375
+2014/08/11 17:15:51 Setting NIC #2 to use host-only network &quot;vboxnet4&quot;...
+2014/08/11 17:15:51 Setting VM storage...
+2014/08/11 17:15:59 Done. Type `boot2docker up` to start the VM.
+
+$ boot2docker info | python -m json.tool
+{
+    &quot;BaseFolder&quot;: &quot;/Users/odewahn/VirtualBox/VMs/boot2docker-vm&quot;,
+    &quot;BootOrder&quot;: null,
+    &quot;CPUs&quot;: 4,
+    &quot;CfgFile&quot;: &quot;/Users/odewahn/VirtualBox/VMs/boot2docker-vm/boot2docker-vm.vbox&quot;,
+    &quot;DockerPort&quot;: 2375,
+    &quot;Flag&quot;: 0,
+    &quot;Memory&quot;: 4096,
+    &quot;Name&quot;: &quot;boot2docker-vm&quot;,
+    &quot;OSType&quot;: &quot;&quot;,
+    &quot;SSHPort&quot;: 2022,
+    &quot;SerialFile&quot;: &quot;/Users/odewahn/.boot2docker/boot2docker-vm.sock&quot;,
+    &quot;State&quot;: &quot;poweroff&quot;,
+    &quot;UUID&quot;: &quot;db24beb1-5b83-4744-9f5f-ce05b41eda91&quot;,
+    &quot;VRAM&quot;: 8
+}</code></pre>
+<h2>Opening a port with VirtualBox</h2>
+<p>By and large, boot2docker hides the nitty gritty details of working directly with <a href="https://www.virtualbox.org/">VirtualBox</a>, the underlying software that allows us to run the VMs.  However, there&#39;s one particular situation -- opening a port from your VM to your host machine -- where you&#39;ll need to use the VirtualBox itself.  The most common use case for doing this is when you are developing some custom app that is running within Docker, but you want to connect with it in your browser.</p>
+<p>For example, say you&#39;re writing a Rails application.  You might pull down the a <a href="https://registry.hub.docker.com/u/stackbrew/rails/">Docker image that has a  Ruby and Rails environment</a> installed, start the local development server, and then try to connect to <a href="localhost:4567">localhost:4567</a> to see the output, like you would in a &quot;normal&quot; environment.  By default, however, boot2docker only exposes a few ports on the VM (port 2022 for SSH and port 2375 for the boot2docker API), so instead of seeing your app, you&#39;ll only see a &quot;Cannot connect&quot; page.</p>
+<p>Fortunately, the fix for this is quite simple.  VirtualBox has a command line utility called &quot;VBoxManage&quot; that you can use to customize the box as it runs.  To expose a port, type something like this into your terminal:    </p>
+<pre><code>$ VBoxManage controlvm boot2docker-vm natpf1 &quot;rails-server,tcp,127.0.0.1,4567,,4567&quot;</code></pre>
+<p>This will create a port forwarding rule that in VirtualBox that will last until you destroy the box.  You can also create this rule in the VirtualBox GUI tool in the &quot;Settings -&gt; Network -&gt; Port Forwarding&quot; screen, as shows in the next figure.</p>
+<p><img src="images/vboxmanage.png"/></p>
+<p>You can find out more about this tool in the extensive <a href="https://www.virtualbox.org/manual/UserManual.html">VirtualBox documentation</a> site.</p>
+
+
+                
+
+<div class="nav-buttons">
+<ul class="nav nav-pills">
+   
+      <li>
+         <a href="introduction.html" title="Introduction"> 
+            <span class="glyphicon glyphicon-chevron-left"/> Previous
+         </a>
+      </li>
+   
+   
+      <li>
+         <a href="docker-images.html" title="Images: Layered filesystems"> 
+            Next <span class="glyphicon glyphicon-chevron-right"/>
+         </a>
+      </li>
+   
+</ul>
+</div>
+
+
+                <div id="disqus_thread"></div>
+
+            </section>
+
+        </section>
+
+	
+    </div>
+
+    <footer>
+        <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg" />
+    </footer>
+
+</body>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+      window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+      window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+});
+</script>
+
+
+</html>

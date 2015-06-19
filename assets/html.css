@@ -1,0 +1,190 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: #2972E0;
+  text-decoration: none;
+}
+
+.row {
+	margin-top: 20px;
+}
+
+
+/* Header
+----------------------------------------------------------------- */
+
+header {
+  position: relative;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+header #buttons {
+  position: absolute;
+  top: 3px;
+  left: 20px;
+}
+
+header #buttons a {
+  color: gray;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+header h1 {
+  font-weight: 300;
+  font-size: 20px;
+
+}
+
+header a {
+  color: gray;	
+}
+
+.fork-on-github {
+	z-index: 999999999; 
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	border: 0;
+}
+
+.social-buttons {
+	margin-left: 120px;
+	width: 70%;
+}
+
+
+
+
+/* Sidebar
+----------------------------------------------------------------- */
+#sidebar {
+   display: none;
+}
+
+.toc-element {
+	padding: 10px;
+}
+
+.nav-buttons {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
+/* index.html specific elements
+----------------------------------------------------------------- */
+
+.ico {
+  vertical-align: top;
+  float: left;
+  margin-right: 20px;
+}
+
+.testimonial-img {
+  border-radius: 12px;
+  margin-bottom: 10px;
+  width: 120px;
+  margin-right: 20px;
+  float: left;
+}
+
+blockquote {
+  color: #918D8D;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+blockquote cite {
+  display: block;
+  text-align: right;
+}
+
+.positioning-statement {
+	font-size: 1.5em; 
+	line-height: 1.5em; 
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.contributing {
+   background-color: #eee;
+   border-radius: 10px; 
+   padding: 10px;
+   width: 90%;
+}
+
+
+/* Content
+----------------------------------------------------------------- */
+
+#flex-box {
+  display: flex;
+  flex: 1 100%;
+}
+
+#flex-box #sidebar {
+  flex: 0 0 250px;
+  border-right: 1px solid #E0E0E0;
+}
+
+#flex-box #content {
+  flex: 1;
+}
+
+#content-body {
+  width: 750px;
+  margin: 0 auto;
+}
+
+#content-body h1 {
+  font-size: 35px;
+  margin-bottom: 0.8em;
+}
+
+#content-body p {
+  line-height: 1.6em;
+}
+
+#content-body pre {
+  background-color: #F5F5F5;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
+#content-body img {
+	width: 100%;
+}
+
+
+/* Footer
+---------------------------------------------------- */
+footer {
+   position: relative;
+   border-top: 1px solid #E0E0E0;
+   padding: 20px;
+}
+
+.logo {
+	margin-left: 80px;
+	margin-right: 40px;
+	margin-bottom: 20px;
+	width: 120px;
+	float: left;
+}
+
+
+
+
+
+
+
