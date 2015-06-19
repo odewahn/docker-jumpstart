@@ -8,7 +8,7 @@ This chapter will walk you through the installation process.  Since both Docker 
 
 ## Install boot2docker
 
-Before you start, it's a good idea to first set up SSH on your host machine so that boot2docker can install your login credentials on the VM.  Otherwise, you'll be prompted for a password whenever you log in.  If you're unfamiliar with SSH or SSH keys, Appendix ??? will give you details of how to get set up.
+Before you start, it's a good idea to first set up SSH on your host machine so that boot2docker can install your login credentials on the VM.  Otherwise, you'll be prompted for a password whenever you log in.  If you're unfamiliar with SSH or SSH keys, [GitHub tutorial step 1 and 2](https://help.github.com/articles/generating-ssh-keys/) will give you details of how to get set up.
 
 First, download the installation package for your system.  You can find [Mac](http://docs.docker.com/installation/mac/) and [Windows](http://docs.docker.com/installation/windows/) installation instructions on the Docker's [documentation site](http://docs.docker.com/).  Next, you run the install procedure, which will install the boot2docker command line tool as well  [VirtualBox](https://www.virtualbox.org/), a free tool from Oracle that allows your computer to run virtual machines.
 
