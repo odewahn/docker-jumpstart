@@ -105,10 +105,5 @@ Notice that in this example we're running the Flask app directly when we start t
 Dockerfiles provide a relatively simple way to create a base image.  And, because you can use the FROM command to chain Dockerfiles together into increasingly complex images, you can do quite a lot, even with Docker's (refreshingly!) minimal command set.  But, if you already have an existing IA tool (and you should!), such as [Chef](http://www.getchef.com/), [Puppet](http://puppetlabs.com/), [Ansible](http://www.ansible.com/home), [Salt](http://www.saltstack.com/), it's very unlikely you could or even should rewrite everything.  So, if you're in this situation what can you do?
 
 
-
-<<<<<<< HEAD
-I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his [Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
-=======
 I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with [his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
->>>>>>> 6e314fc89ee9763160ff6cc44ce7a1f3214f7e65
 
