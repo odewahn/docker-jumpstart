@@ -42,7 +42,7 @@ $ boot2docker stop
 
 ## Start a container
 
-Once you've got the image built, you're almost there.  Change int the directory that contains your notebooks and run this command.  *NB: you need Docker 1.3+ on a Mac or Linux for this to work* :
+Once you've got the image built, you're almost there.  Change into the directory that contains your notebooks and run this command.  *NB: you need Docker 1.3+ on a Mac or Linux for this to work* :
 
 ```
 docker run -it           \

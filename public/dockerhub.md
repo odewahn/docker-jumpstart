@@ -12,15 +12,15 @@ There are two key ways to interact with the Docker Hub:
 * The Web interface, where you can register, manage image metadata (description, etc), add or remove collaborators, and so forth.  This is similar to GitHub.
 * The docker command line tool, where you can pull, push, or search for images.  This is similar to git.
 
-There are a number of features specific Docker.  One of the most interesting, [trusted builds](http://blog.docker.com/2013/11/introducing-trusted-builds/), allow you to create signed images based on a Dockerfile in GitHub or BitBucket.  As with a CI/CD tool, the trusted build is triggered by a post commit hook on your repo so that your image will also be up to date with your codebase. In addition, the image is flagged with a "trusted build" badge so that you can verity its source.
+There are a number of features specific to Docker.  One of the most interesting, [trusted builds](http://blog.docker.com/2013/11/introducing-trusted-builds/), allow you to create signed images based on a Dockerfile in GitHub or BitBucket.  As with a CI/CD tool, the trusted build is triggered by a post commit hook on your repo so that your image will also be up to date with your codebase. In addition, the image is flagged with a "trusted build" badge so that you can verity its source.
 
 ## Create an account
 
-The first to using Docker hub is to sign up, which you can do on their [Signup page](https://hub.docker.com/account/signup/).  You'll be asked for an email address, username, and a password.  Once you login, you'll see a project dashboard that's similar to other hosting sites:
+The first step to using Docker Hub is to sign up, which you can do on their [Signup page](https://hub.docker.com/account/signup/).  You'll be asked for an email address, username, and a password.  Once you log in, you'll see a project dashboard that's similar to other hosting sites:
 
 <img src="images/docker-hub.png"/>
 
-Once you've set up your account, you use the `docker login` command from your terminal so that you can pull and push images from your account.  (Note that you can also register with this command, as well, if you want to not use the site.)  Once you login, your docker will store your credentials in a file called `.dockercfg` in your home directory.
+Once you've set up your account, you use the `docker login` command from your terminal so that you can pull and push images from your account.  (Note that you can also register with this command, as well, if you want to not use the site.)  Once you log in, Docker will store your credentials in a file called `.dockercfg` in your home directory.
 
 ## Searching for images
 
@@ -82,14 +82,14 @@ As discussed in the chapter on images, you can also pull only the layers of the 
 
 ## Pushing an Image
 
-Let's try to push an image to the hub.  Unlike the previous `search` and `pull` commands, you must be logged in to push.  If you're not already logged in, Docker will prompt you for your credentials
+Let's try to push an image to the Hub.  Unlike the previous `search` and `pull` commands, you must be logged in to push.  If you're not already logged in, Docker will prompt you for your credentials
 
 ```
 $ docker push simple_flask:latest
 2014/09/03 12:42:10 You cannot push a "root" repository. Please rename your repository in <user>/<repo> (ex: odewahn/simple_flask:latest)
 ```
 
-This rather self-explanatory error occurs because we didn't specify a username when we created the image.  To push to the Docker Hub, though, you must specify a username.  (Unless you're luck enough to be making Docker's official images, in which case you probably don't need this book!).  So, let's add our username using the `docker tag` command:
+This rather self-explanatory error occurs because we didn't specify a username when we created the image.  To push to the Docker Hub, though, you must specify a username.  (Unless you're lucky enough to be making Docker's official images, in which case you probably don't need this book!)  So, let's add our username using the `docker tag` command:
 
 ```
 $ docker tag simple_flask odewahn/simple_flask
