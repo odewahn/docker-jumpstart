@@ -41,7 +41,7 @@ As you can see, the command returns the following columns:
 * CREATED.  The date the repository was created, as opposed to when it was pulled.  This can help you assess how "fresh" a particular build is.  Docker appears to update their master images on a fairly frequent basis.
 * VIRTUAL SIZE.  The size of the image.
 
-If you want a granular view of the layers in in an image, you can use `docker history`:
+If you want a granular view of the layers in an image, you can use `docker history`:
 
 ```console
 $ docker history ubuntu:latest

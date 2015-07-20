@@ -29,7 +29,7 @@ The following table summarizes the instructions; many of these options map direc
 | EXPOSE     | Opens a port for linked containers
 | FROM       | The base image to use in the build.  This is mandatory and must be the first command in the file.
 | MAINTAINER | An optional value for the maintainer of the script
-| ONBUILD    | A command that is triggered when the image in the Dcokerfile is used as a base for another image
+| ONBUILD    | A command that is triggered when the image in the Dockerfile is used as a base for another image
 | RUN        | Executes a command and save the result as a new layer
 | USER       | Sets the default user within the container 
 | VOLUME     | Creates a shared volume that can be shared among containers or by the host machine
@@ -106,5 +106,9 @@ Dockerfiles provide a relatively simple way to create a base image.  And, becaus
 
 
 
+<<<<<<< HEAD
 I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with his [Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
+=======
+I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE [Packer](http://www.packer.io/). MAYBE I CAN CONVINCE Jeroen Janssens to do something with [his Ansible stuff](https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build)
+>>>>>>> 6e314fc89ee9763160ff6cc44ce7a1f3214f7e65
 
