@@ -7,6 +7,7 @@ This Jumpstart guide has only scratched the surface of Docker.  This page is mea
 * [The Docker Documentation Page](http://docs.docker.com/userguide/).  Docker's documentation is great, if somewhat sprawling.    
 * [The Docker Book](http://www.dockerbook.com/).  An awesome resource from [James Turnbull](http://www.jamesturnbull.net/), a prolific author and VP of Services at Docker, Inc. 
 * [CenturyLink Labs](http://www.centurylinklabs.com/).  An amazing collection of how to articles and interviews with leading people in the Docker field.
+* [Awesome Docker](https://github.com/veggiemonk/awesome-docker). A curated list of Docker resources and projects.
 
 ## Other tools in the Docker ecosystem
 
