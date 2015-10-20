@@ -1,130 +1,135 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="UTF-8"/>
-  <title>Docker Jumpstart</title>
 
-  <!-- Styling -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='assets/html.css' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8"/>
 
-  <!-- JavaScript -->
-  <!-- CSS is loaded before JavaScript in order to improve user experience -->
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script type="text/javascript"
-          src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js"></script>
+    <title>Docker Jumpstart</title>
+
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'></link>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href='assets/html.css' rel='stylesheet' type='text/css'></link>
+
+
+    <script type="text/javascript">
+        $(function() {
+            $("#link-toc").click(function(e) {
+                e.preventDefault();
+                $("#sidebar").toggle();
+            });
+        });
+    </script>
+
+    <script src="//load.sumome.com/" data-sumo-site-id="ca676cfc7c5993c46bf17cf9ed8b9d47938a9cb8a826a03048f1b032a4eadac4" async="async"></script>
+
 </head>
 
 <body>
-<header>
-  <div id="buttons">
-    <i id="link-toc" class="fa fa-bars"></i>
-  </div>
 
-  <div class="heading">
-    <h1><a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
+    <header>
+        <div id="buttons">
+            <a href="#" id="link-toc">☰</a>
+        </div>
 
-    <div class="social-buttons">
-      <div class="twitter">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
-        <script>!function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-            if (!d.getElementById(id)) {
-              js = d.createElement(s);
-              js.id = id;
-              js.src = p + '://platform.twitter.com/widgets.js';
-              fjs.parentNode.insertBefore(js, fjs);
-            }
-          }(document, 'script', 'twitter-wjs');</script>
-      </div>
-      <div class="github">
-        <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch"
-                allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
-      </div>
-    </div>
-  </div>
 
-  <a href="https://github.com/odewahn/docker-jumpstart">
-    <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
-  </a>
-</header>
-
-<div id="flex-box">
-  <section id="sidebar">
-    
-
-<div class="toc-element clearfix">
-  <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
-</div>
+          <table class="social-buttons">
+	     <tr>
+		<td width="80%">
+                   <h1> <a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
+		</td>
+	        <td>
+                   <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
+                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	         </td>
+	         <td>
+	            <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
+	          </td>
+	     </tr>
+	  </table>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
-</div>
+        <a href="https://github.com/odewahn/docker-jumpstart">
+           <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
+        </a>
+
+
+    </header>
+
+    <div id="flex-box">
+
+        <section id="sidebar">
+            
+
+
+   <div class="toc-element clearfix">
+      <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+   </div>
 
 
 
-<div class="toc-element clearfix">
-  <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
-</div>
+   <div class="toc-element clearfix">
+      <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+   </div>
 
 
-  </section>
 
-  <section id="content">
-    <section id="content-body">
+        </section>
 
-      <h1>Containers: Running instances of an Image</h1><p>A container is a running image that you start with the <code>docker run</code> command, like this:</p>
-<pre><code class="language-console">$ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
-</code></pre>
+        <section id="content">
+            <section id="content-body">
+
+                <h1>Containers: Running instances of an Image</h1>
+<p>A container is a running image that you start with the <code>docker run</code> command, like this:</p>
+<pre><code class="language-console">$ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></pre>
 <p>The command consists of:</p>
 <ul>
 <li>OPTIONS.  There are a LOT of options for the run command.  We&#39;ll cover this in a bit more depth in the next shortly. </li>
 <li>IMAGE.  The name of the image that the container should start from.</li>
 <li>COMMAND.  The command that should run <em>on the container when it starts</em>.  </li>
 </ul>
-<p>Let&#39;s try a simple command to start a new container using the latest version of Ubuntu.  Once this container starts, you&#39;ll be at a bash shell where you can do <code>cat /etc/os-release</code> to see the release information about the OS:</p>
+<p>Let&#39;s try a simple command to to start a new container using the latest version of Ubuntu.  Once this container starts, you&#39;ll be at a bash shell where you can do <code>cat /etc/os-release</code> to see the release information about the OS:</p>
 <pre><code class="language-console">$ docker run -it ubuntu:latest /bin/bash
 root@4afa46473802:/# cat /etc/os-release 
 NAME=&quot;Ubuntu&quot;
@@ -135,11 +140,9 @@ PRETTY_NAME=&quot;Ubuntu 14.04.1 LTS&quot;
 VERSION_ID=&quot;14.04&quot;
 HOME_URL=&quot;http://www.ubuntu.com/&quot;
 SUPPORT_URL=&quot;http://help.ubuntu.com/&quot;
-BUG_REPORT_URL=&quot;http://bugs.launchpad.net/ubuntu/&quot;
-</code></pre>
+BUG_REPORT_URL=&quot;http://bugs.launchpad.net/ubuntu/&quot;</code></pre>
 <p>Next, type this command in your running container to make a simple change on the filesystem:</p>
-<pre><code class="language-console">root@4afa46473802:/# echo &quot;hello world&quot; &gt; /tmp/hello.txt
-</code></pre>
+<pre><code class="language-console">root@4afa46473802:/# echo &quot;hello world&quot; &gt; /tmp/hello.txt</code></pre>
 <p>Now that you&#39;ve verified the OS release and created a test file, here&#39;s a bit more detail about the options we&#39;ve used in the RUN command:</p>
 <ul>
 <li>The OPTIONS &quot;-it&quot; tell Docker to make the container interactive and provide a tty (i.e., attach a terminal)</li>
@@ -150,8 +153,7 @@ BUG_REPORT_URL=&quot;http://bugs.launchpad.net/ubuntu/&quot;
 <p>To see this in action, open a new terminal on your host machine and use &quot;docker ps&quot; command to see some information about the running container:</p>
 <pre><code class="language-console">$ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-4afa46473802        ubuntu:14.04        /bin/bash           17 hours ago        Up 39 seconds                           jolly_perlman
-</code></pre>
+4afa46473802        ubuntu:14.04        /bin/bash           17 hours ago        Up 39 seconds                           jolly_perlman</code></pre>
 <p>This command will tell you:</p>
 <ul>
 <li>The CONTAINER_ID, a unique identifier you can use to refer to the container in other commands (this is kind of like a process id in Linux)</li>
@@ -165,12 +167,10 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 <p>Now try the <code>docker diff</code> command:</p>
 <pre><code class="language-console">$ docker diff jolly_perlman
 C /tmp
-A /tmp/hello.txt
-</code></pre>
+A /tmp/hello.txt</code></pre>
 <p>As you can see, this command returns the changes that have happened on the filesystem, which in our case is that we&#39;ve changed the &quot;/tmp&quot; directory by adding a &quot;hello.txt&quot; file.  Now let&#39;s commit the changes we&#39;ve made into a new container:</p>
 <pre><code class="language-console">$ docker commit -m &quot;Adding hello world&quot; jolly\_perlman hello\_docker
-5af244124dd8656...
-</code></pre>
+5af244124dd8656...</code></pre>
 <p>Taking another look at <code>docker images</code> shows the effect; we now have a new image called &quot;hello_docker&quot; that includes our &quot;/tmp/hello.txt&quot; file.  Taking a quick look at the container&#39;s history shows how our change added a whopping new 12 byte layer on top of the original layers of ubuntu:latest.</p>
 <pre><code class="language-console">$ docker history hello_docker
 IMAGE               CREATED             CREATED BY                                      SIZE
@@ -181,14 +181,13 @@ cc58e55aa5a5        2 days ago          /bin/sh -c apt-get update &amp;&amp; apt
 d92c3c92fa73        2 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
 9942dd43ff21        2 days ago          /bin/sh -c echo &#39;#!/bin/sh&#39; &gt; /usr/sbin/polic   194.5 kB
 1c9383292a8f        2 days ago          /bin/sh -c #(nop) ADD file:c1472c26527df28498   192.5 MB
-511136ea3c5a        14 months ago                                                       0 B
-</code></pre>
+511136ea3c5a        14 months ago                                                       0 B</code></pre>
 <p>Finally, we can kill our docker process like this:</p>
 <pre><code class="language-console">$ docker kill jolly_perlman
-jolly_perlman
-</code></pre>
+jolly_perlman</code></pre>
 <p>If you do <em>docker ps</em> again, you&#39;ll see that the process has stopped. </p>
-<h2>Docker RUN Quick Reference</h2><p>The next chapter will provide much more detail on how to create your own containers and images using <em>docker run</em>, one of the most feature-rich commands in Docker.  Taken directly from <em>docker help</em>, this table is a useful quick reference you can refer to as you go further with Docker. </p>
+<h2>Docker RUN Quick Reference</h2>
+<p>The next chapter will provide much more detail on how to create your own containers and images using <em>docker run</em>, one of the most feature-rich commands in Docker.  Taken directly from <em>docker help</em>, this table is a useful quick reference you can refer to as you go further with Docker. </p>
 <table>
 <thead>
 <tr>
@@ -259,7 +258,7 @@ jolly_perlman
 </tr>
 <tr>
 <td>-m, --memory=&quot;&quot;</td>
-<td>Memory limit (format: <number><optional unit>, where unit = b, k, m or g)</optional></number></td>
+<td>Memory limit (format: <number><optional unit>, where unit = b, k, m or g)</td>
 </tr>
 <tr>
 <td>--name=&quot;&quot;</td>
@@ -279,7 +278,7 @@ jolly_perlman
 </tr>
 <tr>
 <td></td>
-<td>&#39;container:<name or id>&#39;: reuses another container network stack</name></td>
+<td>&#39;container:<name or id>&#39;: reuses another container network stack</td>
 </tr>
 <tr>
 <td></td>
@@ -336,7 +335,8 @@ jolly_perlman
 </tbody>
 </table>
 
-      
+
+                
 
 <div class="nav-buttons">
 <ul class="nav nav-pills">
@@ -358,48 +358,38 @@ jolly_perlman
 </div>
 
 
-      <div id="disqus_thread"></div>
+                <div id="disqus_thread"></div>
 
-    </section>
-  </section>
-</div>
+            </section>
 
-<footer>
-  <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg"/>
-</footer>
-
-<script type="text/javascript">
-  var toggled;
-  $("#link-toc").click(function (event) {
-    event.preventDefault();
-    var sidebar = $("#sidebar");
-    if (!toggled) {
-      sidebar.transition({x: '25rem'});
-      toggled = true;
-    } else {
-      sidebar.transition({x: '-25rem'});
-      toggled = false;
-    }
-  });
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
-    window.disqus_title = $('title').text() + " / " + $('h1').first().text();
-    window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+        </section>
 
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  });
-</script>
+    </div>
+
+    <footer>
+        <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg" />
+    </footer>
+
 </body>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+      window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+      window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+});
+</script>
+
+
 </html>

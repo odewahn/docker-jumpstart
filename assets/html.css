@@ -1,232 +1,190 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
 a {
-    color: #2972E0;
-    text-decoration: none;
-
-    transition: border 300ms ease;
-    -o-transition: border 300ms ease;
-    -webkit-transition: border 300ms ease;
+  color: #2972E0;
+  text-decoration: none;
 }
 
 .row {
-    margin-top: 20px;
+	margin-top: 20px;
 }
+
 
 /* Header
 ----------------------------------------------------------------- */
 
 header {
-    border-bottom: 1px solid #E0E0E0;
+  position: relative;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 header #buttons {
-    display: inline-block;
-    font-size: 30px;
-    padding: 30px;
+  position: absolute;
+  top: 3px;
+  left: 20px;
 }
 
-#buttons i {
-    cursor: pointer;
+header #buttons a {
+  color: gray;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+header h1 {
+  font-weight: 300;
+  font-size: 20px;
+
 }
 
 header a {
-    color: gray;
-    font-weight: 300;
-    font-size: 20px;
-}
-
-header a:hover {
-    border-bottom: 1px solid gray;
-    text-decoration: none;
+  color: gray;	
 }
 
 .fork-on-github {
-    z-index: 999999999;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
-}
-
-.heading {
-    display: inline-block;
-    margin-left: 120px;
-    width: 70%;
-}
-
-.heading * div,
-.heading h1 {
-    display: inline-block;
+	z-index: 999999999; 
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	border: 0;
 }
 
 .social-buttons {
-    float: right;
-    padding: 20px;
+	margin-left: 120px;
+	width: 70%;
 }
 
-.social-buttons .twitter {
-    padding-right: 10px;
-}
+
+
 
 /* Sidebar
 ----------------------------------------------------------------- */
 #sidebar {
-    position: absolute;
-    left: -25rem;
-    overflow-y: auto;
-    top: 91px;
-    width: 25rem;
-    z-index: 2;
+   display: none;
 }
 
 .toc-element {
-    padding: 10px;
-}
-
-.toc-element a {
-    border-bottom: 2px solid transparent;
-    color: #2F2F2F;
-    text-decoration: none;
-}
-
-.toc-element a:hover {
-    border-bottom-color: #3A7BD5;
+	padding: 10px;
 }
 
 .nav-buttons {
-    margin-top: 20px;
-    margin-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
+
 
 /* index.html specific elements
 ----------------------------------------------------------------- */
 
-.lead-button {
-    border: 1px solid #3A7BD5;
-    border-radius: 20px;
-    color: #3A7BD5;
-    cursor: pointer;
-    margin: 10px;
-    padding: 6px 12px;
-    text-decoration: none;
-
-    transition: all 450ms ease;
-    -o-transition: all 450ms ease;
-    -webkit-transition: all 450ms ease;
-}
-
-.lead-button:hover {
-    background-color: #3A7BD5;
-    color: white;
-    text-decoration: none;
-}
-
-.link-column {
-    margin: 0 auto 50px auto;
-    width: 50%;
-}
-
 .ico {
-    vertical-align: top;
-    float: left;
-    margin-right: 20px;
+  vertical-align: top;
+  float: left;
+  margin-right: 20px;
 }
 
 .testimonial-img {
-    border-radius: 12px;
-    margin-bottom: 10px;
-    width: 120px;
-    margin-right: 20px;
-    float: left;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  width: 120px;
+  margin-right: 20px;
+  float: left;
 }
 
 blockquote {
-    color: #918D8D;
-    font-size: 14px;
-    line-height: 20px;
-    overflow: hidden;
+  color: #918D8D;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
 }
 
 blockquote cite {
-    display: block;
-    text-align: right;
+  display: block;
+  text-align: right;
 }
 
 .positioning-statement {
-    font-size: 2.5em;
-    line-height: 1.5em;
-    padding: 40px;
-    text-align: center;
+	font-size: 1.5em; 
+	line-height: 1.5em; 
+	padding: 10px;
+	margin-bottom: 20px;
 }
 
 .contributing {
-    background-color: #EEEEEE;
-    border-radius: 10px;
-    padding: 30px;
-    margin: auto auto 30px auto;
-    width: 90%;
+   background-color: #eee;
+   border-radius: 10px; 
+   padding: 10px;
+   width: 90%;
 }
+
 
 /* Content
 ----------------------------------------------------------------- */
 
 #flex-box {
-    display: flex;
-    flex: 1 100%;
+  display: flex;
+  flex: 1 100%;
 }
 
 #flex-box #sidebar {
-    flex: 0 0 250px;
+  flex: 0 0 250px;
+  border-right: 1px solid #E0E0E0;
 }
 
 #flex-box #content {
-    flex: 1;
+  flex: 1;
 }
 
 #content-body {
-    width: 750px;
-    margin: 0 auto;
+  width: 750px;
+  margin: 0 auto;
 }
 
 #content-body h1 {
-    font-size: 35px;
-    margin-bottom: 0.8em;
+  font-size: 35px;
+  margin-bottom: 0.8em;
 }
 
 #content-body p {
-    line-height: 1.6em;
+  line-height: 1.6em;
 }
 
 #content-body pre {
-    background-color: #F5F5F5;
-    border: 1px solid #CCC;
-    border-radius: 5px;
-    padding: 10px;
-    white-space: pre-wrap;
+  background-color: #F5F5F5;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 10px;
+  white-space: pre-wrap;
 }
 
 #content-body img {
-    width: 100%;
+	width: 100%;
 }
+
 
 /* Footer
 ---------------------------------------------------- */
 footer {
-    position: relative;
-    border-top: 1px solid #E0E0E0;
-    padding: 20px;
+   position: relative;
+   border-top: 1px solid #E0E0E0;
+   padding: 20px;
 }
 
 .logo {
-    margin-left: 80px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-    width: 120px;
-    float: left;
+	margin-left: 80px;
+	margin-right: 40px;
+	margin-bottom: 20px;
+	width: 120px;
+	float: left;
 }
+
+
+
+
+
+
+
