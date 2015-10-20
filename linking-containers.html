@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8"/>
-  <title><%= title %></title>
+  <title>Docker Jumpstart</title>
 
   <!-- Styling -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript"
           src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <script type="text/javascript" src="/assets/jquery.transit.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="heading">
-    <h1><a href="/docker-jumpstart"><%= title %> by <%= author %></a></h1>
+    <h1><a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
 
     <div class="social-buttons">
       <div class="twitter">
@@ -55,15 +55,79 @@
 
 <div id="flex-box">
   <section id="sidebar">
-    <%- partial("_toc") %>
+    
+
+<div class="toc-element clearfix">
+  <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+</div>
+
+
   </section>
 
   <section id="content">
     <section id="content-body">
 
-      <%- yield %>
+      <h1>Creating multi-container apps</h1><p>Even the simplest apps have many parts and services: a database, a job processing queue, an app server, and a caching layer.  </p>
+<p>Docker allows you to run each of these services in it&#39;s own container and then link them together so that they can communicate.</p>
+<h2>docker-compose</h2><p><a href="https://docs.docker.com/compose/">docker-compose</a> is a tool for managing multiple container apps in Docker. It&#39;s kind of like foreman </p>
 
-      <%- partial("_nav") %>
+      
+
+<div class="nav-buttons">
+<ul class="nav nav-pills">
+   
+   
+</ul>
+</div>
+
 
       <div id="disqus_thread"></div>
 

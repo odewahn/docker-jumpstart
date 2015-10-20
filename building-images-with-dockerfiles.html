@@ -1,0 +1,297 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Docker Jumpstart</title>
+
+  <!-- Styling -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='assets/html.css' rel='stylesheet' type='text/css'>
+
+  <!-- JavaScript -->
+  <!-- CSS is loaded before JavaScript in order to improve user experience -->
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js"></script>
+</head>
+
+<body>
+<header>
+  <div id="buttons">
+    <i id="link-toc" class="fa fa-bars"></i>
+  </div>
+
+  <div class="heading">
+    <h1><a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
+
+    <div class="social-buttons">
+      <div class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + '://platform.twitter.com/widgets.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, 'script', 'twitter-wjs');</script>
+      </div>
+      <div class="github">
+        <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch"
+                allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/odewahn/docker-jumpstart">
+    <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
+  </a>
+</header>
+
+<div id="flex-box">
+  <section id="sidebar">
+    
+
+<div class="toc-element clearfix">
+  <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+</div>
+
+
+  </section>
+
+  <section id="content">
+    <section id="content-body">
+
+      <h1>Building images with Dockerfiles</h1><p>As we saw in the Docker Walkthrough chapter, the general Docker workflow is:</p>
+<ul>
+<li>start a container based on an image in a known state</li>
+<li>add things to the filesystem, such as packages, codebases, libraries, files, or anything else</li>
+<li>commit the changes as layers to make a new image</li>
+</ul>
+<p>In the walkthrough, we took a very simple approach of just starting a container interactively, running the commands we wanted (like &quot;apt-get install&quot; and &quot;pip install&quot;), and then committing the container into a new image.</p>
+<p>In this chapter, we&#39;ll look at a more robust way to build an image.  Rather than just running commands and adding files with tools like <em>wget</em>, we&#39;ll put our instructions in a special file called the <em><a href="https://docs.docker.com/reference/builder/">Dockerfile</a></em>.  A Dockerfile is similar in concept to the recipes and manifests found in infrastructure automation (IA) tools like <a href="http://www.getchef.com/">Chef</a> or <a href="http://puppetlabs.com/">Puppet</a>.  </p>
+<p>Overall, a Dockerfile is much more stripped down than the IA tools, consisting of a single file with a DSL that has a handful of instructions.  The format looks like this:</p>
+<pre><code class="language-console"># Comment
+INSTRUCTION arguments
+</code></pre>
+<p>The following table summarizes the instructions; many of these options map directly to option in the &quot;docker run&quot; command:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADD</td>
+<td>Copies a file from the host system onto the container</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>The command that runs when the container starts</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>Sets an environment variable in the new container</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>Opens a port for linked containers</td>
+</tr>
+<tr>
+<td>FROM</td>
+<td>The base image to use in the build.  This is mandatory and must be the first command in the file.</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>An optional value for the maintainer of the script</td>
+</tr>
+<tr>
+<td>ONBUILD</td>
+<td>A command that is triggered when the image in the Dockerfile is used as a base for another image</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>Executes a command and save the result as a new layer</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>Sets the default user within the container </td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>Creates a shared volume that can be shared among containers or by the host machine</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>Set the default working directory for the container</td>
+</tr>
+</tbody>
+</table>
+<p>Once you&#39;ve created a Dockerfile and added all your instructions, you can use it to build an image using the <code>docker build</code> command.  The format for this command is:</p>
+<pre><code>docker build [OPTIONS] PATH | URL | -
+</code></pre><p>The build command results in a new image that you can start using <code>docker run</code>, just like any other image.  Each line in the Dockerfile will correspond to a layer in the images&#39; commit history.</p>
+<h2>Example of building an image from a Dockerfile</h2><p>Perhaps the best way to understand a Dockerfile is to dive into an example.  Let&#39;s take a look at the example we went through in our overview chapter and condense it into a Dockerfile:</p>
+<pre><code>#
+# Super simple example of a Dockerfile
+#
+FROM ubuntu:latest
+MAINTAINER Andrew Odewahn &quot;odewahn@oreilly.com&quot;
+
+RUN apt-get update
+RUN apt-get install -y python python-pip wget
+RUN pip install Flask
+
+ADD hello.py /home/hello.py
+
+WORKDIR /home
+</code></pre><p>As you can see, it&#39;s pretty straightforward: we start from &quot;ubuntu:latest,&quot; install dependencies with the <code>RUN</code> command, add our code file with the <code>ADD</code> command, and then set the default directory for when the container starts.  Once we have a Dockerfile itself, we can build an image using <code>docker build</code>, like this:</p>
+<pre><code>$ docker build -t &quot;simple_flask:dockerfile&quot; .
+</code></pre><p>The &quot;-t&quot; flag adds a tag to the image so that it gets a nice repository name and tag. Also note the final &quot;.&quot;, which tells Docker to use the Dockerfile in the current directory.  Once you start the build, you&#39;ll see it churn away for a while installing things, and when it completes, you&#39;ll have a brand new image.  Running <code>docker history</code> will show you the effect of each command has on the overall size of the file:</p>
+<pre><code class="language-console">$ docker history simple_flask:dockerfile
+IMAGE               CREATED             CREATED BY                                      SIZE
+9ada423c0a60        3 days ago          /bin/sh -c #(nop) WORKDIR /home                 0 B
+5c3625267cd9        3 days ago          /bin/sh -c #(nop) ADD file:96e699cd177f1a3f3c   163 B
+9c20a6548fbe        3 days ago          /bin/sh -c pip install Flask                    4.959 MB
+7195370ae6e1        3 days ago          /bin/sh -c apt-get install -y python python-p   136.1 MB
+761bf82875cc        3 days ago          /bin/sh -c apt-get update                       19.94 MB
+40b29df1d2c2        3 days ago          /bin/sh -c #(nop) MAINTAINER Andrew Odewahn &quot;   0 B
+c4ff7513909d        9 days ago          /bin/sh -c #(nop) CMD [/bin/bash]               0 B
+cc58e55aa5a5        9 days ago          /bin/sh -c apt-get update &amp;&amp; apt-get dist-upg   32.67 MB
+0ea0d582fd90        9 days ago          /bin/sh -c sed -i &#39;s/^#\s*\(deb.*universe\)$/   1.895 kB
+d92c3c92fa73        9 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
+9942dd43ff21        9 days ago          /bin/sh -c echo &#39;#!/bin/sh&#39; &gt; /usr/sbin/polic   194.5 kB
+1c9383292a8f        9 days ago          /bin/sh -c #(nop) ADD file:c1472c26527df28498   192.5 MB
+511136ea3c5a        14 months ago                                                       0 B
+</code></pre>
+<p>Finally, you can start the container itself with the following command:</p>
+<pre><code class="language-console">$ docker run -p 5000:5000 simple_flask:dockerfile python hello.py
+</code></pre>
+<p>Notice that in this example we&#39;re running the Flask app directly when we start the container, rather than just running the bash shell and starting it as we&#39;ve done in other examples.</p>
+<h2>Dockerfiles vs. Infrastructure Automation (IA)</h2><p>Dockerfiles provide a relatively simple way to create a base image.  And, because you can use the FROM command to chain Dockerfiles together into increasingly complex images, you can do quite a lot, even with Docker&#39;s (refreshingly!) minimal command set.  But, if you already have an existing IA tool (and you should!), such as <a href="http://www.getchef.com/">Chef</a>, <a href="http://puppetlabs.com/">Puppet</a>, <a href="http://www.ansible.com/home">Ansible</a>, <a href="http://www.saltstack.com/">Salt</a>, it&#39;s very unlikely you could or even should rewrite everything.  So, if you&#39;re in this situation what can you do?</p>
+<p>I HAVE NO IDEA!  I NEED TO RESEARCH THIS MORE, BUT I THINK YOU CAN USE A TOOL LIKE <a href="http://www.packer.io/">Packer</a>. MAYBE I CAN CONVINCE Jeroen Janssens to do something with <a href="https://github.com/jeroenjanssens/data-science-at-the-command-line/tree/master/dst/build">his Ansible stuff</a></p>
+
+      
+
+<div class="nav-buttons">
+<ul class="nav nav-pills">
+   
+      <li>
+         <a href="example.html" title="Creating your own Docker Image"> 
+            <span class="glyphicon glyphicon-chevron-left"/> Previous
+         </a>
+      </li>
+   
+   
+      <li>
+         <a href="dockerhub.html" title="Sharing images on Docker Hub"> 
+            Next <span class="glyphicon glyphicon-chevron-right"/>
+         </a>
+      </li>
+   
+</ul>
+</div>
+
+
+      <div id="disqus_thread"></div>
+
+    </section>
+  </section>
+</div>
+
+<footer>
+  <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg"/>
+</footer>
+
+<script type="text/javascript">
+  var toggled;
+  $("#link-toc").click(function (event) {
+    event.preventDefault();
+    var sidebar = $("#sidebar");
+    if (!toggled) {
+      sidebar.transition({x: '25rem'});
+      toggled = true;
+    } else {
+      sidebar.transition({x: '-25rem'});
+      toggled = false;
+    }
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+    window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+    window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Docker Jumpstart</title>
+
+  <!-- Styling -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='assets/html.css' rel='stylesheet' type='text/css'>
+
+  <!-- JavaScript -->
+  <!-- CSS is loaded before JavaScript in order to improve user experience -->
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js"></script>
+</head>
+
+<body>
+<header>
+  <div id="buttons">
+    <i id="link-toc" class="fa fa-bars"></i>
+  </div>
+
+  <div class="heading">
+    <h1><a href="/docker-jumpstart">Docker Jumpstart by Andrew Odewahn</a></h1>
+
+    <div class="social-buttons">
+      <div class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="odewahn">Tweet</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + '://platform.twitter.com/widgets.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, 'script', 'twitter-wjs');</script>
+      </div>
+      <div class="github">
+        <iframe src="http://ghbtns.com/github-btn.html?user=odewahn&repo=docker-jumpstart&type=watch"
+                allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">&nbsp;</iframe>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/odewahn/docker-jumpstart">
+    <img src="https://s3.amazonaws.com/orm-atlas-media/fork-on-github.png" class="fork-on-github"/>
+  </a>
+</header>
+
+<div id="flex-box">
+  <section id="sidebar">
+    
+
+<div class="toc-element clearfix">
+  <span class="fa fa-th fa-2x fa-border"></span> <a href="introduction.html">Introduction</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-laptop fa-2x fa-border"></span> <a href="boot2docker.html">Using boot2docker to run Docker on a Mac or Windows</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-align-justify fa-2x fa-border"></span> <a href="docker-images.html">Images: Layered filesystems</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-bolt fa-2x fa-border"></span> <a href="containers.html">Containers: Running instances of an Image</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-gears fa-2x fa-border"></span> <a href="example.html">Creating your own Docker Image</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-file-text-o fa-2x fa-border"></span> <a href="building-images-with-dockerfiles.html">Building images with Dockerfiles</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-cloud-upload fa-2x fa-border"></span> <a href="dockerhub.html">Sharing images on Docker Hub</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-bar-chart fa-2x fa-border"></span> <a href="ipython-notebook.html">Running Jupyter / IPython Notebooks on Docker for Mac/Windows</a>
+</div>
+
+
+
+<div class="toc-element clearfix">
+  <span class="fa fa-book fa-2x fa-border"></span> <a href="additional-resources.html">Additional Resources</a>
+</div>
+
+
+  </section>
+
+  <section id="content">
+    <section id="content-body">
+
+      <h1>Images: Layered filesystems</h1><p>A Docker <em>image</em> represents a snapshot of a filesystem at a certain point in time.  As mentioned in the introduction, the image is composed of layers that progressively stack on top of each other; containers (running instances of an image) can share these layers among them, which is one reason Docker is so much lighter weight than a full VM, where nothing is generally shared.  </p>
+<p>Perhaps the best way to start (after you get Docker installed, of course!) is to use &quot;docker pull&quot; to grab the latest release of Ubuntu (we&#39;ll talk more about where you&#39;re actually pulling from in the chapter on the Docker Hub): </p>
+<pre><code class="language-console">$ docker pull ubuntu
+Pulling repository ubuntu
+c4ff7513909d: Download complete 
+511136ea3c5a: Download complete 
+1c9383292a8f: Download complete 
+9942dd43ff21: Download complete 
+d92c3c92fa73: Download complete 
+0ea0d582fd90: Download complete 
+cc58e55aa5a5: Download complete 
+...
+</code></pre>
+<p>As you pull the image, you&#39;ll see the progress of each dependent layer being downloaded.  Once all the layers are finished downloading (and there are a LOT of layers for Ubuntu and all the versions), you can run <code>docker images</code> to get information about the images on your system.  Here&#39;s an example:</p>
+<pre><code class="language-console">$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+ubuntu              14.04               c4ff7513909d        2 days ago          225.4 MB
+ubuntu              latest              c4ff7513909d        2 days ago          225.4 MB
+ubuntu              14.04.1             c4ff7513909d        2 days ago          225.4 MB
+ubuntu              trusty              c4ff7513909d        2 days ago          225.4 MB
+ubuntu              14.10               75204fdb260b        2 days ago          230.1 MB
+ubuntu              utopic              75204fdb260b        2 days ago          230.1 MB
+ubuntu              12.04.5             822a01ae9a15        2 days ago          108.1 MB
+ubuntu              precise             822a01ae9a15        2 days ago          108.1 MB
+ubuntu              12.04               822a01ae9a15        2 days ago          108.1 MB
+</code></pre>
+<p>As you can see, the command returns the following columns:</p>
+<ul>
+<li>REPOSITORY.  The name of the repository, which in this case is &quot;ubuntu&quot;.</li>
+<li>TAG.  We&#39;ll talk more about tags in a bit, but tags are similar to those found in git or other version control systems, and represent a specific set point in the repositories&#39; commit history.  As you can see from the list, we&#39;ve pulled down a bunch of different versions of ubuntu: 14.04, 14.10, 12.04, etc.  Each of these versions is tagged with a version number, a name, and there&#39;s even a special tag called &quot;latest&quot; which represents the latest version.</li>
+<li>IMAGE ID.  This is like the primary key for the image.  Sometimes, such as when you commit a container without specifying a name or tag, the repository or the tag is <em>&lt;NONE&gt;</em>, but you can always refer to a specific image or container using its ID.</li>
+<li>CREATED.  The date the repository was created, as opposed to when it was pulled.  This can help you assess how &quot;fresh&quot; a particular build is.  Docker appears to update their master images on a fairly frequent basis.</li>
+<li>VIRTUAL SIZE.  The size of the image.</li>
+</ul>
+<p>If you want a granular view of the layers in an image, you can use <code>docker history</code>:</p>
+<pre><code class="language-console">$ docker history ubuntu:latest
+IMAGE               CREATED             CREATED BY                                      SIZE
+c4ff7513909d        7 days ago          /bin/sh -c #(nop) CMD [/bin/bash]               0 B
+cc58e55aa5a5        7 days ago          /bin/sh -c apt-get update &amp;&amp; apt-get dist-upg   32.67 MB
+0ea0d582fd90        7 days ago          /bin/sh -c sed -i &#39;s/^#\s*\(deb.*universe\)$/   1.895 kB
+d92c3c92fa73        7 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
+9942dd43ff21        7 days ago          /bin/sh -c echo &#39;#!/bin/sh&#39; &gt; /usr/sbin/polic   194.5 kB
+1c9383292a8f        7 days ago          /bin/sh -c #(nop) ADD file:c1472c26527df28498   192.5 MB
+511136ea3c5a        14 months ago                                                       0 B
+</code></pre>
+<p>Each line in the history corresponds to a commit of the image&#39;s filesystem.  The values in the SIZE column add up to the corresponding VIRTUAL SIZE column for the image in <code>docker image</code>. (If you decide to double check this, remember to that the column has units, so be sure to convert all values to MB.)  </p>
+<p>There are a couple of key things to understand about the layers in a docker images:</p>
+<ul>
+<li>They can be reused.  Docker keeps track of all the layers you&#39;ve pulled.  So, if two images happen to have a layer in common (for example, if two images are built form the same base box), Docker will reuse the common parts, and only pull the diffs.</li>
+<li>The layers are always additive, which can lead to really big sizes if you&#39;re not careful.  For example, if you download a large file, make a commit, delete the file, and then make another commit, that large file will still be present in the layer history.  We&#39;ll come back to this idea again, so don&#39;t worry if it doesn&#39;t make too much sense right now.  Just remember that layers are always additive.</li>
+</ul>
+
+      
+
+<div class="nav-buttons">
+<ul class="nav nav-pills">
+   
+      <li>
+         <a href="boot2docker.html" title="Using boot2docker to run Docker on a Mac or Windows"> 
+            <span class="glyphicon glyphicon-chevron-left"/> Previous
+         </a>
+      </li>
+   
+   
+      <li>
+         <a href="containers.html" title="Containers: Running instances of an Image"> 
+            Next <span class="glyphicon glyphicon-chevron-right"/>
+         </a>
+      </li>
+   
+</ul>
+</div>
+
+
+      <div id="disqus_thread"></div>
+
+    </section>
+  </section>
+</div>
+
+<footer>
+  <img class="logo" src="http://orm-logo-service.herokuapp.com/webops/logo.svg"/>
+</footer>
+
+<script type="text/javascript">
+  var toggled;
+  $("#link-toc").click(function (event) {
+    event.preventDefault();
+    var sidebar = $("#sidebar");
+    if (!toggled) {
+      sidebar.transition({x: '25rem'});
+      toggled = true;
+    } else {
+      sidebar.transition({x: '-25rem'});
+      toggled = false;
+    }
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    window.disqus_shortname = 'dockerjumpstart'; // required: replace example with your forum shortname
+    window.disqus_title = $('title').text() + " / " + $('h1').first().text();
+    window.disqus_id = $('title').text() + " / " + $('section').first().attr('id');
+
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  });
+</script>
+</body>
+</html>
